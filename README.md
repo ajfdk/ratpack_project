@@ -1,4 +1,2 @@
-# fuzzy-sniffle
+# Rat Pack Project
 Project
-
-Rat Pack project

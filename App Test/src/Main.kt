@@ -1,18 +1,16 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how Android Studio suggests fixing it.
-    println("Hello, " + name + "!")
+    var pet = BasePet(0, 0, 0, 0, "BasePet", Status.OK)
+    var clone = pet.copy()
+    clone.hunger = 100
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    println(pet.hunger)
+    println(clone.hunger)
+    clone.state = Status.SICK
 
-    print(6/5)
+    println(pet.state)
+    println(clone.state)
 }
 
 enum class Status() {
@@ -23,16 +21,14 @@ enum class Status() {
     SICK
 }
 
-class BasePet() {
-    var hunger = 0
-    var happiness = 0
-    var growth = 0
-    var age = 0
-    var name = "basePet"
-    var state = Status.OK
-}
+data class BasePet(var hunger: Int,
+                   var happiness: Int,
+                   var growth: Int,
+                   var age: Int,
+                   var name: String,
+                   var state : Status)
 
-fun BasePet.clone(): BasePet {
+/*fun BasePet.clone(): BasePet {
     val pet = BasePet()
     pet.hunger = hunger
     pet.happiness = happiness
@@ -41,7 +37,7 @@ fun BasePet.clone(): BasePet {
     pet.name = name
     pet.state = state
     return pet
-}
+}*/
 
 fun todo() {
 

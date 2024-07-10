@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
             ),
             body:  TabBarView(children: [
               Text("checklist"),
-              Image(image: AssetImage('images/cookiedude.png')).animate().shake(duration: Duration(seconds: 1, milliseconds: 500), offset: Offset(10, 0), hz: 3),
+              Image(image: AssetImage('images/cookiedude.png')).animate().shake(
+                  duration: Duration(seconds: 1, milliseconds: 500),
+                  offset: Offset(10, 0), hz: 3),
               Text("Feed me seymour!"),
               Text("settings"),
             ]),

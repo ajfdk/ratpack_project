@@ -51,8 +51,35 @@ class _Screen2State extends State<Screen2> {
         //child: Image.asset('images/Shirt.png'),
       ),
               Text("Shirt: 10 Pogger Points"),
-      ],
+
+            Container(
+              margin: EdgeInsets.all(8.0),
+              child: IconButton(
+                iconSize: 10,
+                icon: Image.asset('assets/PantS.png'),
+                tooltip: "Pretty Pant: 30 points",
+                onPressed: () {
+                  //var LocalPoints = MyHomePage().points;
+                  //Navigator.push(
+                  //context,
+                  //MaterialPageRoute(builder: (context) => MyHomePage()),
+
+                  //);
+                  //MyHomePage().points-=10;
+                  print(pointsShop.toString());
+                  setState(() => pointsShop -=30);
+                  //setState(() => pointsText = pointsShop.toString());
+                  _Screen2State();
+                },
+              ),
+
+
+              //child: Image.asset('images/Shirt.png'),
+            ),
+            Text("Pant: 30 Pogger Points"),
+          ],
     ),
+
     ),
     );
   }

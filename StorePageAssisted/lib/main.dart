@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  var points = 20000;
+  int points = 20000;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +47,8 @@ class MyHomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => Screen2()),
                 );
+                //points-=10;
+                //print(points);
               },
               child: Text('Go to Screen 2'),
             ),

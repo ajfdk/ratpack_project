@@ -6,6 +6,7 @@ class Screen2 extends StatefulWidget{
   _Screen2State createState() => _Screen2State();
 }
 class _Screen2State extends State<Screen2> {
+  int pointsShop = MyHomePage().points;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,17 +17,22 @@ class _Screen2State extends State<Screen2> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            ElevatedButton(
+            IconButton(
+              iconSize: 10,
+              icon: Image.asset('assets/ShirtS.png'),
             onPressed: () {
               //var LocalPoints = MyHomePage().points;
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
-            );
+              //Navigator.push(
+              //context,
+              //MaterialPageRoute(builder: (context) => MyHomePage()),
+
+            //);
               //MyHomePage().points-=10;
-              setState(() => MyHomePage().points-=10);
+              print(pointsShop.toString());
+              setState(() => pointsShop -=10);
+              _Screen2State();
            },
-        child: Text(MyHomePage().points.toString()),
+        //child: Image.asset('images/Shirt.png'),
       ),
       ],
     ),

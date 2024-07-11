@@ -11,14 +11,16 @@ class _Screen2State extends State<Screen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 2'),
+        title: Text('Store'),
       ),
       body: Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            IconButton(
-              iconSize: 10,
+              Container(
+                margin: EdgeInsets.all(8.0),
+                child: IconButton(
+                  iconSize: 10,
               icon: Image.asset('assets/ShirtS.png'),
             onPressed: () {
               //var LocalPoints = MyHomePage().points;
@@ -30,10 +32,18 @@ class _Screen2State extends State<Screen2> {
               //MyHomePage().points-=10;
               print(pointsShop.toString());
               setState(() => pointsShop -=10);
+              //setState(() => pointsText = pointsShop.toString());
               _Screen2State();
            },
+            ),
+
         //child: Image.asset('images/Shirt.png'),
       ),
+              Text.rich(
+               TextSpan(
+                 text: "Points" + pointsShop.toString()
+               )
+              ),
       ],
     ),
     ),

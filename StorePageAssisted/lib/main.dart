@@ -50,7 +50,7 @@ class MyHomePage extends StatelessWidget {
                 //points-=10;
                 //print(points);
               },
-              child: Text('Go to Screen 2'),
+              child: Text('Go to Store'),
             ),
             ElevatedButton(
               onPressed: () {

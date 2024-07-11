@@ -12,6 +12,15 @@ class _Screen2State extends State<Screen2> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Store'),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(4.0),
+          child:Text.rich(
+              TextSpan(
+                  text: "Points: " + pointsShop.toString()
+              )
+
+          )
+        ),
       ),
       body: Center(
         child: Column(
@@ -22,6 +31,7 @@ class _Screen2State extends State<Screen2> {
                 child: IconButton(
                   iconSize: 10,
               icon: Image.asset('assets/ShirtS.png'),
+            tooltip: "Shwanky Shirt: 10 points",
             onPressed: () {
               //var LocalPoints = MyHomePage().points;
               //Navigator.push(
@@ -37,13 +47,10 @@ class _Screen2State extends State<Screen2> {
            },
             ),
 
+
         //child: Image.asset('images/Shirt.png'),
       ),
-              Text.rich(
-               TextSpan(
-                 text: "Points" + pointsShop.toString()
-               )
-              ),
+              Text("Shirt: 10 Pogger Points"),
       ],
     ),
     ),

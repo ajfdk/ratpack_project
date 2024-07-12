@@ -1,8 +1,8 @@
 # Rat Pack Project
-hello world
-# tamagotchi
 
-to do app
+# A Gamified ToDo list killer app
+
+[Check out our wiki!](https://github.com/ajfdk/ratpack-project/wiki)
 
 ## Getting Started
 

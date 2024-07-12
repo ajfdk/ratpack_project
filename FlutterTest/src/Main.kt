@@ -1,6 +1,6 @@
 fun main() {
         var pet = BasePet(0, 0, 0, 0, "BasePet", Status.OK)
-        var clone = pet.copy()
+        var clone = cloner(pet)
         clone.hunger = 100
 
         println(pet.hunger)
@@ -26,6 +26,7 @@ data class BasePet(var hunger: Int,
                    var name: String,
                    var state : Status)
 
-fun cloner(tobeCloned: BasePet) {
+fun cloner(tobeCloned: BasePet) : BasePet {
     var clone = tobeCloned.copy()
+    return clone
 }

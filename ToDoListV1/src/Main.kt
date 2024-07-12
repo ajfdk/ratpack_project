@@ -10,13 +10,6 @@ fun main() {
         ListObject("Check-3", Goal.INCOMPLETE, LocalDateTime.of(2025, 7, 11, 18, 0)))
     var listSize = taskList.size
     var currentTime = LocalDateTime.now()
-    println(currentTime)
-    checkTime(taskList, currentTime)
-    println(taskList[0].taskStatus)
-    println(taskList[1].taskStatus)
-    println(taskList[2].taskStatus)
-    taskDone(taskList, 2)
-    println(taskList[2].taskStatus)
 }
 
 fun checkTime(taskList: MutableList<ListObject>, currentTime: LocalDateTime) {

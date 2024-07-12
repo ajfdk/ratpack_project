@@ -25,3 +25,7 @@ data class BasePet(var hunger: Int,
                    var age: Int,
                    var name: String,
                    var state : Status)
+
+fun cloner(tobeCloned: BasePet) {
+    var clone = tobeCloned.copy()
+}

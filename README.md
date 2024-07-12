@@ -1,6 +1,8 @@
-# todo_pet
+# Rat Pack Project
+hello world
+# tamagotchi
 
-ratpack todo-pet
+to do app
 
 ## Getting Started
 

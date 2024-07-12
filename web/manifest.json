@@ -1,11 +1,11 @@
 {
-    "name": "tamagotchi",
-    "short_name": "tamagotchi",
+    "name": "todo_pet",
+    "short_name": "todo_pet",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "to do app",
+    "description": "ratpack todo-pet",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

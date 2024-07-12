@@ -59,7 +59,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Screen3()),
                 );
               },
-              child: Text('SETTINGS DLC COMING SOON'),
+              child: Text('Toys'),
             ),
           ],
         ),

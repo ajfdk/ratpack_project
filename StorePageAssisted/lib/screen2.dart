@@ -72,8 +72,6 @@ class _Screen2State extends State<Screen2> {
                   _Screen2State();
                 },
               ),
-
-
               //child: Image.asset('images/Shirt.png'),
             ),
             Text("Pant: 30 Pogger Points"),

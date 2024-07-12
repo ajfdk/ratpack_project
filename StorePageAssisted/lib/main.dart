@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Screen1()),
                 );
               },
-              child: Text('Go to Screen 1'),
+              child: Text('Go to Food Pantry'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -59,7 +59,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Screen3()),
                 );
               },
-              child: Text('Go to Screen 3'),
+              child: Text('SETTINGS DLC COMING SOON'),
             ),
           ],
         ),

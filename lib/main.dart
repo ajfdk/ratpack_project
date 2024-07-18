@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  int points = 20000;
+  double points = 20000;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

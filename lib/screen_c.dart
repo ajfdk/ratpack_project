@@ -80,6 +80,7 @@ class _ScreenCState extends State<ScreenC> {
                   setState(() {
                     _selectedItems.forEach((index) {
                       items.removeAt(index);
+
                     });
                     _selectedItems.clear();
                   });

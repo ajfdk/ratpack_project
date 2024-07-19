@@ -87,8 +87,9 @@ class _ScreenBState extends State<ScreenB> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    _selectedItems.forEach((index) {
-                      items.removeAt(index);
+                    _selectedItems.forEach((index) { //issue possibly with the different states of the lists.
+                      items.removeAt(index);  //issue with purchasing multiple at a time.
+                      //_selectedItems.remove(index);
                       //cartCost += items[index].price;
                     });
                     //pointsShop-=cartCost;

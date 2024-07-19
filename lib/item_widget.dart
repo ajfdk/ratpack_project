@@ -24,12 +24,14 @@ class ItemWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.file(
+              Image.asset(item.imagePath),
+             /* Image.file(
                 File(item.imagePath),
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,
               ),
+              */
               SizedBox(height: 8),
               Text(
                 item.name,

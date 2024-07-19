@@ -1,3 +1,4 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'intermediate_screen.dart';
 import 'screen2.dart';
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   int points = 20000;
+  final game = MyGame();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,3 +68,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+class MyGame {
+}
+

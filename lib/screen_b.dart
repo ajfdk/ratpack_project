@@ -88,14 +88,14 @@ class _ScreenBState extends State<ScreenB> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) { //issue possibly with the different states of the lists.
-                      items.removeAt(index);  //issue with purchasing multiple at a time.
+                      //items.removeAt(index);  //issue with purchasing multiple at a time.
                       //_selectedItems.remove(index);
-                      //cartCost += items[index].price;
+                      cartCost += items[index].price;
                     });
-                    //pointsShop-=cartCost;
-                    //cartCost=0;
+                    pointsShop-=cartCost;
+                    cartCost=0;
                     _selectedItems.clear();
-                    //MyHomePage().points = pointsShop;
+                    MyHomePage().points = pointsShop;
                   });
                 },
                 child: Text('Purchase'),

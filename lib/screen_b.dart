@@ -92,12 +92,15 @@ class _ScreenBState extends State<ScreenB> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    _selectedItems.forEach((index) { //issue possibly with the different states of the lists.
+                    _selectedItems.forEach((index) {
                       //items.removeAt(index);  //issue with purchasing multiple at a time.
                       //_selectedItems.remove(index);
                       cartCost += items[index].price;
                     });
                     if(pointsShop >= cartCost) {
+                      _selectedItems.forEach((item){
+                        print(items[item].type);
+                    });
                       pointsShop -= cartCost;
                     }
                     else{
@@ -105,8 +108,8 @@ class _ScreenBState extends State<ScreenB> {
                         context: context,
                         builder: (context) => AlertDialog(
                           title: Text("Oh No!"),
-                          content: Text(
-                            "You are too poor for these items"
+                          content: Ink.image(
+                            image: const AssetImage('assets/poor.jpg')
                           ),
                           actions:[
                             TextButton(

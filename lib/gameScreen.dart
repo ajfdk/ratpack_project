@@ -3,12 +3,9 @@ import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
-import 'package:flame/sprite.dart';
-import 'package:tamagotchi/main.dart';
-import 'package:flame/input.dart';
 
 class PetRoomGame extends FlameGame with HasCollisionDetection, HasGameRef{
-  late IdleSprite pet_mob;
+  late IdleSprite petMob;
 
   @override
   Future<void> onLoad() async {
@@ -16,10 +13,10 @@ class PetRoomGame extends FlameGame with HasCollisionDetection, HasGameRef{
     // final petImage = await images.load('mogus.png');
     // pet_mob = Sprite(petImage);
     add(ScreenHitbox());
-    pet_mob = IdleSprite()
+    petMob = IdleSprite()
       ..position = Vector2(100, 100)
       ..size = Vector2(50, 50);
-    add(pet_mob);
+    add(petMob);
   }
 
   @override
@@ -97,7 +94,7 @@ class gameScreen extends StatelessWidget  {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Pet's Room"),
+        title: const Text("My Pet's Room"),
       ),
       body: Container(
         padding: EdgeInsets.all(20),

@@ -3,6 +3,8 @@ import 'intermediate_screen.dart';
 import 'screen2.dart';
 import 'screen3.dart';
 
+double points = 200000;
+
 void main() {
   runApp(MyApp());
 }
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  double points = 20000;
+  //double points = 20000;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

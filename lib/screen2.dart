@@ -6,7 +6,7 @@ class Screen2 extends StatefulWidget{
   _Screen2State createState() => _Screen2State();
 }
 class _Screen2State extends State<Screen2> {
-  double pointsShop = MyHomePage().points;
+  double pointsShop = points;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

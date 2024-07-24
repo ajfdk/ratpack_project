@@ -11,7 +11,7 @@ class ScreenB extends StatefulWidget {
 
 class _ScreenBState extends State<ScreenB> {
   double cartCost = 0;
-  double pointsShop = MyHomePage().points;
+  double pointsShop = points;
   final List<Item> items = [
     Item(
       name: 'Pants',
@@ -95,7 +95,7 @@ class _ScreenBState extends State<ScreenB> {
                     pointsShop-=cartCost;
                     cartCost=0;
                     _selectedItems.clear();
-                    MyHomePage().points = pointsShop;
+                    points = pointsShop;
                   });
                 },
                 child: Text('Purchase'),

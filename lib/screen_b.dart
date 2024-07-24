@@ -21,10 +21,10 @@ class _ScreenBState extends State<ScreenB> {
       imagePath: 'assets/PantS.png',
     ),
     Item(
-      name: 'Hamburger',
-      type: 1,
+      name: 'Tomogatchi',
+      type: 3,
       healthPoints: 100,
-      price: 900.0,
+      price: 200.0,
       imagePath: 'assets/PantS.png',
     ),
     Item(
@@ -45,7 +45,7 @@ class _ScreenBState extends State<ScreenB> {
       name: 'French Frys',
       type: 1,
       healthPoints: 30,
-      price: 200.0,
+      price: 999.0,
       imagePath: 'assets/PantS.png',
     )
   ];
@@ -100,6 +100,18 @@ class _ScreenBState extends State<ScreenB> {
                     if(pointsShop >= cartCost) {
                       _selectedItems.forEach((item){
                         print(items[item].type);
+                        if(items[item].type == 1){
+                          privatePantry.add(items[item]);
+                          print(privatePantry);
+                        }
+                        else if(items[item].type == 2){
+                          privateWardrobe.add(items[item]);
+                          print(privateWardrobe);
+                        }
+                        else if(items[item].type == 3){
+                          privateToyBox.add(items[item]);
+                          print(privateToyBox);
+                        }
                     });
                       pointsShop -= cartCost;
                     }

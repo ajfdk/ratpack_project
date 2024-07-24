@@ -56,6 +56,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final todolist = <int>[];
+  int itemNum = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -65,6 +67,20 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+    });
+  }
+
+  void _listAdd() {
+    setState(() {
+      todolist.add(itemNum);
+      itemNum++;
+    });
+  }
+
+  void _listRemove() {
+    setState(() {
+      todolist.removeLast();
+      itemNum--;
     });
   }
 
@@ -106,20 +122,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'The current list:',
             ),
             Text(
-              '$_counter',
+              '$todolist',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            TextButton(
+                onPressed: _listRemove,
+                child: const Text('Remove and decrement')
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _listAdd,
+        tooltip: 'Increment and add to list',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

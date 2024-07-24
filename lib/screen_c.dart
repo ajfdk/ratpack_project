@@ -12,24 +12,28 @@ class _ScreenCState extends State<ScreenC> {
   final List<Item> items = [
     Item(
       name: 'Ball',
+      type: 3,
       healthPoints: 50,
       price: 999.0,
       imagePath: 'path/to/image1.png',
     ),
     Item(
       name: 'Legos',
+      type: 3,
       healthPoints: 9999,
       price: 999.0,
       imagePath: 'path/to/image2.png',
     ),
     Item(
       name: 'Teddy Bear',
+      type: 3,
       healthPoints: 150,
       price: 999.0,
       imagePath: 'path/to/image3.png',
     ),
     Item(
       name: 'Doll',
+      type: 3,
       healthPoints: 200,
       price: 999.0,
       imagePath: 'path/to/image4.png',

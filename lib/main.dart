@@ -3,7 +3,7 @@ import 'intermediate_screen.dart';
 import 'screen2.dart';
 import 'screen3.dart';
 
-double points = 200000;
+//double points = 200000;
 
 void main() {
   runApp(MyApp());

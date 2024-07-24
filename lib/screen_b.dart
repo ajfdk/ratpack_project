@@ -3,7 +3,7 @@ import 'dart:io';
 import 'item_model.dart';
 import 'item_widget.dart';
 import 'package:tamagotchi/main.dart';
-
+import 'player_guest.dart';
 class ScreenB extends StatefulWidget {
   @override
   _ScreenBState createState() => _ScreenBState();
@@ -15,30 +15,35 @@ class _ScreenBState extends State<ScreenB> {
   final List<Item> items = [
     Item(
       name: 'Pants',
+      type: 2,
       healthPoints: 50,
       price: 10.0,
       imagePath: 'assets/PantS.png',
     ),
     Item(
       name: 'Hamburger',
+      type: 1,
       healthPoints: 100,
       price: 900.0,
       imagePath: 'assets/PantS.png',
     ),
     Item(
       name: 'Grill Cheese',
+      type: 1,
       healthPoints: 150,
       price: 50.0,
       imagePath: 'assets/PantS.png',
     ),
     Item(
       name: 'Fruit Snacks',
+      type: 1,
       healthPoints: 200,
       price: 100.0,
       imagePath: 'assets/PantS.png',
     ),
     Item(
       name: 'French Frys',
+      type: 1,
       healthPoints: 30,
       price: 200.0,
       imagePath: 'assets/PantS.png',
@@ -92,7 +97,26 @@ class _ScreenBState extends State<ScreenB> {
                       //_selectedItems.remove(index);
                       cartCost += items[index].price;
                     });
-                    pointsShop-=cartCost;
+                    if(pointsShop >= cartCost) {
+                      pointsShop -= cartCost;
+                    }
+                    else{
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text("Oh No!"),
+                          content: Text(
+                            "You are too poor for these items"
+                          ),
+                          actions:[
+                            TextButton(
+                              child: Text("OK"),
+                              onPressed:()=> Navigator.pop(context),
+                            )
+                          ]
+                        ),
+                      );
+                    }
                     cartCost=0;
                     _selectedItems.clear();
                     points = pointsShop;

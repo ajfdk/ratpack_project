@@ -13,30 +13,35 @@ class _Screen1State extends State<Screen1> {
   final List<Item> items = [
     Item(
       name: 'Pizza',
+      type: 1,
       healthPoints: 50,
       price: 999.0,
       imagePath: 'path/to/image1.png',
     ),
     Item(
       name: 'Hamburger',
+      type: 1,
       healthPoints: 100,
       price: 999.0,
       imagePath: 'path/to/image2.png',
     ),
     Item(
       name: 'Grill Cheese',
+      type: 1,
       healthPoints: 150,
       price: 999.0,
       imagePath: 'path/to/image3.png',
     ),
     Item(
       name: 'Fruit Snacks',
+      type: 1,
       healthPoints: 200,
       price: 999.0,
       imagePath: 'path/to/image4.png',
     ),
     Item(
       name: 'French Frys',
+      type: 1,
       healthPoints: 30,
       price: 999.0,
       imagePath: 'path/to/image5.png',

@@ -6,7 +6,6 @@ class ItemWidget extends StatelessWidget {
   final Item item;
   final bool isSelected;
   final VoidCallback onTap;
-
   ItemWidget({
     required this.item,
     required this.isSelected,

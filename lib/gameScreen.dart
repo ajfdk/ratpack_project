@@ -79,22 +79,16 @@ class IdleSprite extends SpriteComponent with CollisionCallbacks {
     super.onCollision(intersectionPoints, other);
     if (other is ScreenHitbox) {
       // Handle collision with screen edges
-      if (position.x <= 0 || position.x + size.x >= other.game.size.x) {
+      final screenSize = other.size;
+      if (position.x <= 0 || position.x + size.x >= screenSize.x) {
         direction.x = -direction.x; // Reverse X direction
       }
-      if (position.y <= 0 || position.y + size.y >= other.game.size.y) {
+      if (position.y <= 0 || position.y + size.y >= screenSize.y) {
         direction.y = -direction.y; // Reverse Y direction
       }
       // Prevent the sprite from going outside the bounds
-      position.clamp(Vector2.zero(), other.size - size);
+      position.clamp(Vector2.zero(), screenSize - size);
     }
-    // void _keepInBounds() {
-    //   final gameSize = gameRef.size;
-    //   if (position.x < 0) position.x = 0;
-    //   if (position.y < 0) position.y = 0;
-    //   if (position.x + size.x > gameSize.x) position.x = gameSize.x - size.x;
-    //   if (position.y + size.y > gameSize.y) position.y = gameSize.y - size.y;
-    // }
   }
 }
 

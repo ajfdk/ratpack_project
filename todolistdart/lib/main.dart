@@ -54,9 +54,16 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+enum GOAL {incomplete, done, failed}
+
+class _ListObject {
+  String? task;
+  GOAL? taskstatus;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final todolist = <int>[];
+  final todolist = <_ListObject>[];
   int itemNum = 0;
 
   void _incrementCounter() {
@@ -72,7 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _listAdd() {
     setState(() {
-      todolist.add(itemNum);
+      var newObject = _ListObject();
+      newObject.task = itemNum.toString();
+      newObject.taskstatus = GOAL.incomplete;
+      todolist.add(newObject);
       itemNum++;
     });
   }

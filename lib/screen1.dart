@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'item_model.dart';
 import 'item_widget.dart';
 
@@ -10,35 +9,35 @@ class Screen1 extends StatefulWidget {
 
 class _Screen1State extends State<Screen1> {
   final List<Item> items = [
-    Item(
+    FoodItem(
       name: 'Pizza',
       healthPoints: 50,
-      price: 999.0,
-      imagePath: 'path/to/image1.png',
+      description: 'Steaming how pepperoni pizza',
+      imagePath: 'assets/pizza.png',
     ),
-    Item(
+    FoodItem(
       name: 'Hamburger',
       healthPoints: 100,
-      price: 999.0,
-      imagePath: 'path/to/image2.png',
+      description: 'Classic burger with just meat, bread, and cheese',
+      imagePath: 'assets/burger.png',
     ),
-    Item(
+    FoodItem(
       name: 'Grill Cheese',
       healthPoints: 150,
-      price: 999.0,
-      imagePath: 'path/to/image3.png',
+      description: 'Two slices of bread with melted cheese in the middle',
+      imagePath: 'assets/grilledcheese.jpg',
     ),
-    Item(
+    FoodItem(
       name: 'Fruit Snacks',
       healthPoints: 200,
-      price: 999.0,
-      imagePath: 'path/to/image4.png',
+      description: 'A pack of fruit flavored gummies',
+      imagePath: 'assets/gummy.jpg',
     ),
-    Item(
-      name: 'French Frys',
+    FoodItem(
+      name: 'French Fries',
       healthPoints: 30,
-      price: 999.0,
-      imagePath: 'path/to/image5.png',
+      description: 'Hot fries fresh out the grease',
+      imagePath: 'assets/fries.png',
     )
   ];
 

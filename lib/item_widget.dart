@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'item_model.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -24,22 +23,46 @@ class ItemWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.file(
-                File(item.imagePath),
-                width: double.infinity,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 8),
-              Text(
-                item.name,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                flex: 2,
+                child: Image.asset(
+                  item.imagePath,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
               ),
-              Text('Health Points: ${item.healthPoints}'),
-              Text('Price: \$${item.price.toStringAsFixed(2)}'),
+              SizedBox(height: 8),
+              Flexible(
+                child: Text(
+                  item.name,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              if (item is ShopItem) ...[
+                SizedBox(height: 4),
+                Flexible(
+                  child: Text('Price: ${(item as ShopItem).price}'),
+                ),
+              ],
+              SizedBox(height: 4),
+              Flexible(
+                child: Text(item.description),
+              ),
+              if (item is FoodItem) ...[
+                SizedBox(height: 4),
+                Flexible(
+                  child: Text('Health Points: ${(item as FoodItem).healthPoints}'),
+                ),
+              ],
+              if (item is ToyItem) ...[
+                SizedBox(height: 4),
+                Flexible(
+                  child: Text('Durability: ${(item as ToyItem).durability}'),
+                ),
+              ],
             ],
           ),
         ),

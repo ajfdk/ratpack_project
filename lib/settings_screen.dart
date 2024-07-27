@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme_provider.dart';
+import 'pcontrols.dart';
 
-class SettingsScreen extends StatefulWidget {
-  @override
-  _SettingsScreenState createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-  bool _notificationsEnabled = false;
-  bool _darkModeEnabled = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _darkModeEnabled = Provider.of<ThemeProvider>(context, listen: false).themeData == ThemeData.dark();
-  }
-
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,21 +14,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           SwitchListTile(
             title: Text('Enable Notifications'),
-            value: _notificationsEnabled,
+            value: Provider.of<ThemeProvider>(context).notificationsEnabled,
             onChanged: (bool value) {
-              setState(() {
-                _notificationsEnabled = value;
-              });
+              Provider.of<ThemeProvider>(context, listen: false).toggleNotifications();
             },
           ),
           SwitchListTile(
             title: Text('Enable Dark Mode'),
-            value: _darkModeEnabled,
+            value: Provider.of<ThemeProvider>(context).themeData == ThemeData.dark(),
             onChanged: (bool value) {
-              setState(() {
-                _darkModeEnabled = value;
-                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-              });
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
             },
           ),
           ListTile(
@@ -64,16 +46,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               );
             },
           ),
-          ListTile(
-            title: Text('Children\'s Rooms'),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ChildrensRoomsScreen()),
-              );
-            },
-          )
         ],
       ),
     );
@@ -89,34 +61,6 @@ class AccountSettingsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text('Account Settings Page'),
-      ),
-    );
-  }
-}
-
-class ParentalControlsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Parental Controls'),
-      ),
-      body: Center(
-        child: Text('Parental Controls Page'),
-      ),
-    );
-  }
-}
-
-class ChildrensRoomsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Kid\'s Rooms'),
-      ),
-      body: Center(
-        child: Text('Rooms'),
       ),
     );
   }

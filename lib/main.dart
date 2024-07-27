@@ -4,6 +4,7 @@ import 'intermediate_screen.dart';
 import 'screen2.dart';
 import 'settings_screen.dart';
 import 'theme_provider.dart';
+import 'pin_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,12 +60,20 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsScreen()),
-                );
+                bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
+                if (pinProtectionEnabled) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PinScreen()),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsScreen()),
+                  );
+                }
               },
-              child: Text('Settings'),
+              child: Text('Go to Settings'),
             ),
           ],
         ),

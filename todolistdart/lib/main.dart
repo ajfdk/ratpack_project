@@ -58,7 +58,8 @@ enum GOAL {incomplete, done, failed}
 
 class _ListObject {
   String? task;
-  GOAL? taskstatus;
+  GOAL? taskStatus;
+  late DateTime taskTime;
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -77,11 +78,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _timeCheck(_ListObject listObject) {
+    setState(() {
+      var now = DateTime.now();
+        if (listObject.taskTime.isBefore(now)) {
+          listObject.taskStatus = GOAL.failed;
+      }
+    });
+  }
+
   void _listAdd() {
     setState(() {
       var newObject = _ListObject();
+      var now = DateTime.now();
       newObject.task = itemNum.toString();
-      newObject.taskstatus = GOAL.incomplete;
+      newObject.taskStatus = GOAL.incomplete;
+      newObject.taskTime = now.add(const Duration(days: 1));
       todolist.add(newObject);
       itemNum++;
     });

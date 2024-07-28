@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'gameScreen.dart';
 import 'screen1.dart';
 import 'screen_a.dart';
 import 'screen_b.dart';
 import 'screen_c.dart';
+import 'package:flame/game.dart';
 
 class IntermediateScreen extends StatelessWidget {
   @override
@@ -18,9 +20,21 @@ class IntermediateScreen extends StatelessWidget {
               child: Image.asset('assets/intermediate_image.png'), 
             ),
           ),
+          // Flex(direction: Axis.horizontal, children: [],)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Expanded(child:
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => gameScreen()),
+                    );
+                  },
+                  child: const Text('Game Room', textAlign: TextAlign.center,softWrap: true),
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(

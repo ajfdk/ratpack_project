@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   animate_do: ^3.3.4
   flutter_animate: ^4.5.0
+  flame: ^1.18.0
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +68,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/
-    - images/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

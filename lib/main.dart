@@ -1,3 +1,4 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'intermediate_screen.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  int points = 20000;
+  final game = MyGame();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +63,9 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
+                bool pinProtectionEnabled =
+                    Provider.of<ThemeProvider>(context, listen: false)
+                        .pinProtectionEnabled;
                 if (pinProtectionEnabled) {
                   Navigator.push(
                     context,
@@ -80,3 +86,5 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+class MyGame {}

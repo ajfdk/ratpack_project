@@ -2,13 +2,11 @@ class Item {
   final String name;
   final String imagePath;
   final String description;
-  double? price;
 
   Item({
     required this.name,
     required this.imagePath,
     required this.description,
-    this.price,
   });
 }
 

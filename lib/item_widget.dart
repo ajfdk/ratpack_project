@@ -41,27 +41,29 @@ class ItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              if (item is ShopItem) ...[
+              if (isSelected) ...[
+                if (item is ShopItem) ...[
+                  SizedBox(height: 4),
+                  Flexible(
+                    child: Text('Price: ${(item as ShopItem).price}'),
+                  ),
+                ],
                 SizedBox(height: 4),
                 Flexible(
-                  child: Text('Price: ${(item as ShopItem).price}'),
+                  child: Text(item.description),
                 ),
-              ],
-              SizedBox(height: 4),
-              Flexible(
-                child: Text(item.description),
-              ),
-              if (item is FoodItem) ...[
-                SizedBox(height: 4),
-                Flexible(
-                  child: Text('Health Points: ${(item as FoodItem).healthPoints}'),
-                ),
-              ],
-              if (item is ToyItem) ...[
-                SizedBox(height: 4),
-                Flexible(
-                  child: Text('Durability: ${(item as ToyItem).durability}'),
-                ),
+                if (item is FoodItem) ...[
+                  SizedBox(height: 4),
+                  Flexible(
+                    child: Text('Health Points: ${(item as FoodItem).healthPoints}'),
+                  ),
+                ],
+                if (item is ToyItem) ...[
+                  SizedBox(height: 4),
+                  Flexible(
+                    child: Text('Durability: ${(item as ToyItem).durability}'),
+                  ),
+                ],
               ],
             ],
           ),
@@ -69,4 +71,6 @@ class ItemWidget extends StatelessWidget {
       ),
     );
   }
+}
+
 }

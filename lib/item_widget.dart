@@ -73,4 +73,3 @@ class ItemWidget extends StatelessWidget {
   }
 }
 
-}

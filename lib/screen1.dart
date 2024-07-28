@@ -11,6 +11,7 @@ class Screen1 extends StatefulWidget {
 class _Screen1State extends State<Screen1> {
 
   final List<Item> items = [
+    /*
     Item(
       name: 'Pizza',
       type: 1,
@@ -46,6 +47,7 @@ class _Screen1State extends State<Screen1> {
       price: 999.0,
       imagePath: 'path/to/image5.png',
     )
+     */
   ];
 
   final Set<int> _selectedItems = {};

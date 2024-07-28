@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'item_model.dart';
 import 'item_widget.dart';
 
@@ -10,33 +9,29 @@ class ScreenC extends StatefulWidget {
 
 class _ScreenCState extends State<ScreenC> {
   final List<Item> items = [
-    Item(
+    ToyItem(
       name: 'Ball',
-      type: 3,
-      healthPoints: 50,
-      price: 999.0,
-      imagePath: 'path/to/image1.png',
+      durability: 50,
+      description: 'A big red bouncy ball to throw around',
+      imagePath: 'assets/ball.png',
     ),
-    Item(
+    ToyItem(
       name: 'Legos',
-      type: 3,
-      healthPoints: 9999,
-      price: 999.0,
-      imagePath: 'path/to/image2.png',
+      durability: 9999,
+      description: 'Colorful building bricks',
+      imagePath: 'assets/lego.png',
     ),
-    Item(
+    ToyItem(
       name: 'Teddy Bear',
-      type: 3,
-      healthPoints: 150,
-      price: 999.0,
-      imagePath: 'path/to/image3.png',
+      durability: 150,
+      description: 'A brown cuddly bear',
+      imagePath: 'assets/bear.jpg',
     ),
-    Item(
-      name: 'Doll',
-      type: 3,
-      healthPoints: 200,
-      price: 999.0,
-      imagePath: 'path/to/image4.png',
+    ToyItem(
+      name: 'Toy Car',
+      durability: 200,
+      description: 'Yellow windup car',
+      imagePath: 'assets/toycar.png',
     )
   ];
 
@@ -84,7 +79,6 @@ class _ScreenCState extends State<ScreenC> {
                   setState(() {
                     _selectedItems.forEach((index) {
                       items.removeAt(index);
-
                     });
                     _selectedItems.clear();
                   });

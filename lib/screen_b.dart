@@ -13,40 +13,44 @@ class _ScreenBState extends State<ScreenB> {
   double cartCost = 0;
   double pointsShop = points;
   final List<Item> items = [
-    Item(
+    ShopItem(
       name: 'Pants',
       type: 2,
-      healthPoints: 50,
-      price: 10.0,
+      price: 10,
       imagePath: 'assets/PantS.png',
+      description: 'Pants for not being naked',
     ),
-    Item(
+    ShopItem(
       name: 'Tomogatchi',
       type: 3,
-      healthPoints: 100,
-      price: 200.0,
+      durability: 100,
+      price: 200,
       imagePath: 'assets/PantS.png',
+      description: '',
     ),
-    Item(
+    ShopItem(
       name: 'Grill Cheese',
       type: 1,
       healthPoints: 150,
-      price: 50.0,
+      price: 50,
       imagePath: 'assets/PantS.png',
+      description: '',
     ),
-    Item(
+    ShopItem(
       name: 'Fruit Snacks',
       type: 1,
       healthPoints: 200,
-      price: 100.0,
+      price: 100,
       imagePath: 'assets/PantS.png',
+      description: '',
     ),
-    Item(
+    ShopItem(
       name: 'French Frys',
       type: 1,
       healthPoints: 30,
-      price: 999.0,
+      price: 999,
       imagePath: 'assets/PantS.png',
+      description: '',
     )
   ];
 
@@ -95,21 +99,39 @@ class _ScreenBState extends State<ScreenB> {
                     _selectedItems.forEach((index) {
                       //items.removeAt(index);  //issue with purchasing multiple at a time.
                       //_selectedItems.remove(index);
-                      cartCost += items[index].price;
+                      cartCost += ((items[index] as ShopItem).price);
                     });
                     if(pointsShop >= cartCost) {
                       _selectedItems.forEach((item){
-                        print(items[item].type);
-                        if(items[item].type == 1){
-                          privatePantry.add(items[item]);
+                        print((items[item] as ShopItem).type);
+                        if((items[item] as ShopItem).type == 1){
+                          FoodItem tempFood = FoodItem(
+                            name: (items[item] as ShopItem).name,
+                            healthPoints: (items[item] as ShopItem).healthPoints,
+                            imagePath: (items[item] as ShopItem).imagePath,
+                            description: (items[item] as ShopItem).description,
+                          );
+                          privatePantry.add(tempFood);
                           print(privatePantry);
                         }
-                        else if(items[item].type == 2){
-                          privateWardrobe.add(items[item]);
+                        else if((items[item] as ShopItem).type == 2){
+                          ClotheItem tempClothe = ClotheItem(
+                              name: (items[item] as ShopItem).name,
+                              imagePath: (items[item] as ShopItem).imagePath,
+                              description: (items[item] as ShopItem).description,
+                          );
+                          privateWardrobe.add(tempClothe);
                           print(privateWardrobe);
                         }
-                        else if(items[item].type == 3){
-                          privateToyBox.add(items[item]);
+                        else if((items[item] as ShopItem).type == 3){
+                          ToyItem tempToy = ToyItem(
+                            name: (items[item] as ShopItem).name,
+                            durability: (items[item] as ShopItem).durability,
+                            imagePath: (items[item] as ShopItem).imagePath,
+                            description: (items[item] as ShopItem).description,
+
+                          );
+                          privateToyBox.add(tempToy);
                           print(privateToyBox);
                         }
                     });

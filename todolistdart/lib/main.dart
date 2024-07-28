@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'ToDoList',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'To Do List'),
     );
   }
 }
@@ -57,14 +57,16 @@ class MyHomePage extends StatefulWidget {
 enum GOAL {incomplete, done, failed}
 
 class _ListObject {
-  String? task;
-  GOAL? taskStatus;
+  late String task;
+  late GOAL taskStatus;
   late DateTime taskTime;
+  late int taskPoints;
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   final todolist = <_ListObject>[];
+  var todolistPrint = "";
   int itemNum = 0;
 
   void _incrementCounter() {
@@ -94,7 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
       newObject.task = itemNum.toString();
       newObject.taskStatus = GOAL.incomplete;
       newObject.taskTime = now.add(const Duration(days: 1));
+      newObject.taskPoints = 100;
       todolist.add(newObject);
+      todolistPrint = todolistPrint + newObject.task + ". Status: " + newObject.taskStatus.toString()
+          + ", Complete by: " + newObject.taskTime.toString() + ", Points: " + newObject.taskPoints.toString() +"\n";
+      //this print statement is temporary until the point and time-keeping systems are implemented.
       itemNum++;
     });
   }
@@ -147,21 +153,20 @@ class _MyHomePageState extends State<MyHomePage> {
               'The current list:',
             ),
             Text(
-              '$todolist',
+              '$todolistPrint',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             TextButton(
                 onPressed: _listRemove,
-                child: const Text('Remove and decrement')
+                child: const Text('Remove item')
+            ),
+            TextButton(
+              onPressed: _listAdd,
+              child: const Text('Add item')
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _listAdd,
-        tooltip: 'Increment and add to list',
-        child: const Icon(Icons.add),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

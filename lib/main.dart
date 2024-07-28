@@ -63,7 +63,9 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
+                bool pinProtectionEnabled =
+                    Provider.of<ThemeProvider>(context, listen: false)
+                        .pinProtectionEnabled;
                 if (pinProtectionEnabled) {
                   Navigator.push(
                     context,
@@ -84,3 +86,5 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+class MyGame {}

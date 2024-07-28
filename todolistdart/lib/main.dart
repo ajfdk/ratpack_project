@@ -64,21 +64,10 @@ class _ListObject {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   final todolist = <_ListObject>[];
-  var todolistPrint = "";
+  var todolistPrint = <String?>[];
   int itemNum = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   void _timeCheck(_ListObject listObject) {
     setState(() {
@@ -98,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
       newObject.taskTime = now.add(const Duration(days: 1));
       newObject.taskPoints = 100;
       todolist.add(newObject);
-      todolistPrint = todolistPrint + newObject.task + ". Status: " + newObject.taskStatus.toString()
-          + ", Complete by: " + newObject.taskTime.toString() + ", Points: " + newObject.taskPoints.toString() +"\n";
+      todolistPrint.add(newObject.task + ". Status: " + newObject.taskStatus.toString()
+          + ", Complete by: " + newObject.taskTime.toString() + ", Points: " + newObject.taskPoints.toString() +"\n");
       //this print statement is temporary until the point and time-keeping systems are implemented.
       itemNum++;
     });
@@ -108,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _listRemove() {
     setState(() {
       todolist.removeLast();
+      todolistPrint.removeLast();
       itemNum--;
     });
   }

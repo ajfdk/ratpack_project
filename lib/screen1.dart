@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'item_model.dart';
 import 'item_widget.dart';
-
+import 'player_guest.dart';
 class Screen1 extends StatefulWidget {
   @override
   _Screen1State createState() => _Screen1State();
@@ -10,40 +10,7 @@ class Screen1 extends StatefulWidget {
 
 class _Screen1State extends State<Screen1> {
 
-  final List<Item> items = [
-
-    FoodItem(
-      name: 'Pizza',
-      healthPoints: 50,
-      imagePath: 'path/to/image1.png',
-      description: '',
-    ),
-    FoodItem(
-      name: 'Hamburger',
-      healthPoints: 100,
-      imagePath: 'path/to/image2.png',
-      description: '',
-    ),
-    FoodItem(
-      name: 'Grill Cheese',
-      healthPoints: 150,
-      imagePath: 'path/to/image3.png',
-      description: '',
-    ),
-    FoodItem(
-      name: 'Fruit Snacks',
-      healthPoints: 200,
-      imagePath: 'path/to/image4.png',
-      description: '',
-    ),
-    FoodItem(
-      name: 'French Frys',
-      healthPoints: 30,
-      imagePath: 'path/to/image5.png',
-      description: '',
-    )
-
-  ];
+  final List<Item> items = privatePantry;
 
   final Set<int> _selectedItems = {};
 

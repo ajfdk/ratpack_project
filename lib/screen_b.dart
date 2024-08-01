@@ -25,7 +25,7 @@ class _ScreenBState extends State<ScreenB> {
       type: 3,
       durability: 100,
       price: 200,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/Tomogatchi.png',
       description: '',
     ),
     ShopItem(
@@ -33,15 +33,15 @@ class _ScreenBState extends State<ScreenB> {
       type: 1,
       healthPoints: 150,
       price: 50,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/grilledcheese.jpg',
       description: '',
     ),
     ShopItem(
-      name: 'Fruit Snacks',
+      name: 'Gummies',
       type: 1,
       healthPoints: 200,
       price: 100,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/gummy.jpg',
       description: '',
     ),
     ShopItem(
@@ -49,7 +49,7 @@ class _ScreenBState extends State<ScreenB> {
       type: 1,
       healthPoints: 30,
       price: 999,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/fries.png',
       description: '',
     )
   ];

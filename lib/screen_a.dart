@@ -1,36 +1,14 @@
 import 'package:flutter/material.dart';
 import 'item_model.dart';
 import 'item_widget.dart';
-
+import 'player_guest.dart';
 class ScreenA extends StatefulWidget {
   @override
  _ScreenAState createState() => _ScreenAState();
 }
 
 class _ScreenAState extends State<ScreenA> {
-  final List<Item> items = [
-    ClotheItem(
-      name: 'Sun Hat',
-      description: 'Yellow sunhat with a red ribbon',
-      imagePath: 'assets/hat.png'
-    ),
-    ClotheItem(
-        name: 'Mario Hat',
-        description: 'Mario brother\'s famous red hat',
-        imagePath: 'assets/mario.png'
-    ),
-    ClotheItem(
-        name: 'Orange Jacket',
-        description: 'Plain orange hoodie',
-        imagePath: 'assets/hoodie.jpg'
-    ),
-    ClotheItem(
-        name: 'Dress',
-        description: 'Pink frilly dress',
-        imagePath: 'assets/dress.png'
-    ),
-  ];
-
+  final List<Item> items = privateWardrobe;
 final Set<int> _selectedItems = {};
 
 @override

@@ -1,5 +1,7 @@
+
+import 'item_model.dart';
 double points = 500;
 //Possibly switch to dictionaries, though not built in.
-var privatePantry = [];
-var privateWardrobe = [];
-var privateToyBox = [];
+final List<Item> privatePantry = [];
+final List<Item> privateWardrobe = [];
+final List<Item> privateToyBox = [];

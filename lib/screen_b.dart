@@ -16,6 +16,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Pants',
       type: 2,
+      clothingType: 2,
       price: 10,
       imagePath: 'assets/PantS.png',
       description: 'Pants for not being naked',
@@ -117,6 +118,7 @@ class _ScreenBState extends State<ScreenB> {
                         else if((items[item] as ShopItem).type == 2){
                           ClotheItem tempClothe = ClotheItem(
                               name: (items[item] as ShopItem).name,
+                              clothingType: (items[item] as ShopItem).clothingType,
                               imagePath: (items[item] as ShopItem).imagePath,
                               description: (items[item] as ShopItem).description,
                           );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'points_storage.dart';
 import 'theme_provider.dart';
 import 'pcontrols.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final PointsStorage storage = PointsStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +48,11 @@ class SettingsScreen extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: Text('DELETE APPDATA'),
+            tileColor: Colors.red,
+            onTap: storage.deleteDocumentsDirectory,
+          )
         ],
       ),
     );

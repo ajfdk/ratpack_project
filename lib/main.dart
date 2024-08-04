@@ -1,11 +1,15 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tamagotchi/points_storage.dart';
 import 'intermediate_screen.dart';
 import 'screen2.dart';
 import 'settings_screen.dart';
 import 'theme_provider.dart';
 import 'pin_screen.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  int points = 20000;
+  // int points = 20000;
   final game = MyGame();
 
   @override

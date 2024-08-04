@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'points_storage.dart';
 import 'gameScreen.dart';
 import 'screen1.dart';
 import 'screen_a.dart';
-import 'screen_b.dart';
+import 'screen_b_shop.dart';
 import 'screen_c.dart';
 import 'package:flame/game.dart';
+
 
 class IntermediateScreen extends StatelessWidget {
   @override
@@ -17,7 +19,7 @@ class IntermediateScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: Image.asset('assets/intermediate_image.png'), 
+              child: Image.asset('assets/images/mogus.png'),
             ),
           ),
           // Flex(direction: Axis.horizontal, children: [],)
@@ -48,7 +50,7 @@ class IntermediateScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ScreenB()),
+                    MaterialPageRoute(builder: (context) => ScreenB(storage: PointsStorage(),)),
                   );
                 },
                 child: Text('Shop'),

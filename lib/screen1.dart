@@ -56,6 +56,7 @@ class _Screen1State extends State<Screen1> {
                   setState(() {
                     _selectedItems.forEach((index) {
                       items.removeAt(index);
+                      privatePantry.remove(items[index]);
                     });
                     _selectedItems.clear();
                   });

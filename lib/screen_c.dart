@@ -8,7 +8,7 @@ class ScreenC extends StatefulWidget {
 }
 
 class _ScreenCState extends State<ScreenC> {
-  final List<Item> items = privateToyBox;
+  final List<ToyItem> items = privateToyBox;
 
   final Set<int> _selectedItems = {};
 
@@ -53,7 +53,7 @@ class _ScreenCState extends State<ScreenC> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) {
-                      items.removeAt(index);
+                      items[index].durability = items[index].durability!-1;
                     });
                     _selectedItems.clear();
                   });

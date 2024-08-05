@@ -8,7 +8,7 @@ class ScreenA extends StatefulWidget {
 }
 
 class _ScreenAState extends State<ScreenA> {
-  final List<Item> items = privateWardrobe;
+  final List<ClotheItem> items = privateWardrobe;
 final Set<int> _selectedItems = {};
 
 @override
@@ -52,12 +52,45 @@ Widget build(BuildContext context) {
               onPressed: () {
                 setState(() {
                   _selectedItems.forEach((index) {
-                    items.removeAt(index);
+                    int equipped = 0;
+                    ClotheItem? equippedObject;
+                    equippedClothes.forEach((ClotheObject){
+                      if (items[index].clothingType == ClotheObject.clothingType) {
+                        equipped += 1;
+                        equippedObject = ClotheObject;
+                      }
+                      else{
+                      }
+                    });
+                    if(equipped == 0) {
+                      equippedClothes.add(items[index]);
+                      items.removeAt(index);
+                      _selectedItems.clear();
+                    }
+                    else{
+                      equippedClothes.add(items[index]);
+                      items.add(equippedObject!);
+                      equippedClothes.remove(equippedObject);
+                      _selectedItems.clear();
+                    }
                   });
-                  _selectedItems.clear();
+                  //_selectedItems.clear();
                 });
+                //_selectedItems.clear();
               },
               child: Text('Customize'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                equippedClothes.forEach((item){
+                  items.add(item);
+                });
+                setState((){
+                  equippedClothes.clear();
+                }
+                );
+              },
+              child: Text('Remove Clothes'),
             ),
           ],
         ),

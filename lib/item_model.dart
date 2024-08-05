@@ -42,7 +42,7 @@ class ClotheItem extends Item {
 }
 
 class ToyItem extends Item {
-  final int? durability;
+  int? durability;
 
   ToyItem({
     required String name,

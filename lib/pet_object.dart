@@ -4,13 +4,15 @@ class Pet {
   final int hunger;
   final int age;
   final int happiness;
+  final STATUS curstatus;
 
   Pet({
     required this.name,
     required this.growth,
     required this.hunger,
     required this.age,
-    required this.happiness
+    required this.happiness,
+    required this.curstatus
   });
 }
 

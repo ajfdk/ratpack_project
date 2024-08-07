@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'intermediate_screen.dart';
-import 'screen2.dart';
-import 'settings_screen.dart';
+//import 'screen2.dart';
+//import 'settings_screen.dart';
 import 'theme_provider.dart';
-import 'pin_screen.dart';
+//import 'pin_screen.dart';
 
-void main() {
+/*void main() {
   runApp(MyApp());
-}
+}*/
 
 class MyApp extends StatelessWidget {
   @override
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: themeProvider.themeData,
-            home: MyHomePage(),
+            home: IntermediateScreen(),
           );
         },
       ),
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+/*class MyHomePage extends StatelessWidget {
   int points = 20000;
   @override
   Widget build(BuildContext context) {
@@ -81,3 +81,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+*/

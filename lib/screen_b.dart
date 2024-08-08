@@ -16,7 +16,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Pants',
       type: 2,
-      clothingType: 2,
+      clothingType: 1,
       price: 10,
       imagePath: 'assets/PantS.png',
       description: 'Pants for not being naked',
@@ -32,7 +32,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Jeans',
       type: 2,
-      clothingType: 2,
+      clothingType: 1,
       price: 10,
       imagePath: 'assets/Jeans.png',
       description: 'For style',
@@ -64,7 +64,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Sun Shirt',
       type: 2,
-      clothingType: 3,
+      clothingType: 2,
       price: 10,
       imagePath: 'assets/Shirt_yellow.png',
       description: 'Yellow Shirt',
@@ -72,7 +72,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Dark Soul Shirt',
       type: 2,
-      clothingType: 3,
+      clothingType: 2,
       price: 10,
       imagePath: 'assets/Shirt_black.png',
       description: 'Its black',

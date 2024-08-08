@@ -27,7 +27,7 @@ class FoodItem extends Item {
 
 class ClotheItem extends Item {
   //arbitrary int to represent what segment of the body the clothing applies to,
-  //1 = shoes, 2 = pants, 3 = shirt, 4 = hat
+  //0 = shoes, 1 = pants, 2 = shirt, 3 = hat
   final int? clothingType;
   ClotheItem({
     required String name,

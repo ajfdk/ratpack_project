@@ -6,8 +6,14 @@ final List<FoodItem> privatePantry = [];
 final List<ClotheItem> privateWardrobe = [];
 final List<ToyItem> privateToyBox = [];
 
+ClotheItem defaultClothes = ClotheItem(
+  name: 'DEFAULT',
+  clothingType: -1,
+  imagePath: 'assets/COCONUT_NULL.jpg',
+  description: 'DEVELOPER DEFAULT',
+);
 //This list will eventually go in the pet object. Temp here for testing.
-List<ClotheItem>? equippedClothes = [];
+List<ClotheItem> equippedClothes = [defaultClothes,defaultClothes,defaultClothes,defaultClothes];
 
 Pet playerPet = Pet(
 name: 'Yranib',

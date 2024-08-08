@@ -53,35 +53,55 @@ Widget build(BuildContext context) {
               onPressed: () {
                 setState(() {
                   _selectedItems.forEach((index) {
-                    int equippedIndicator = 0;
-                    int equippedIndex=0;
-                    ClotheItem? equippedObject;
-                    equippedClothes.forEach((ClotheObject){
-                      if (items[index].clothingType == ClotheObject.clothingType) {
-                        equippedIndicator += 1;
-                        equippedObject = ClotheObject;
+                    if(items[index].clothingType == 0){
+                      if(activeClothes[0].clothingType == -1) {
+                        activeClothes[0] = items[index];
+                        items.removeAt(index);
                       }
                       else{
-                        equippedIndex += 1;
+                        items.add(activeClothes[0]);
+                        activeClothes[0] = items[index];
+                        items.removeAt(index);
                       }
-                    });
-                    if(equippedIndicator == 0) {
-                      activeClothes.add(items[index]);
-                      equippedClothes = activeClothes;
-                      items.removeAt(index);
                     }
-                    else{
-                      items.add(equippedObject!);
-                      activeClothes.add(items[index]);
-                      activeClothes.removeAt(equippedIndex);
-                      items.removeAt(index);
-                      equippedClothes?[1] = items[index];
-                      equippedClothes = activeClothes;
+                    else if(items[index].clothingType == 1){
+                      if(activeClothes[1].clothingType == -1) {
+                        activeClothes[1] = items[index];
+                        items.removeAt(index);
+                      }
+                      else{
+                        items.add(activeClothes[1]);
+                        activeClothes[1] = items[index];
+                        items.removeAt(index);
+                      }
                     }
+                    else if(items[index].clothingType == 2){
+                      if(activeClothes[2].clothingType == -1) {
+                        activeClothes[2] = items[index];
+                        items.removeAt(index);
+                      }
+                      else{
+                        items.add(activeClothes[2]);
+                        activeClothes[2] = items[index];
+                        items.removeAt(index);
+                      }
+                    }
+                    else if(items[index].clothingType == 3){
+                      if(activeClothes[3].clothingType == -1) {
+                        activeClothes[3] = items[index];
+                        items.removeAt(index);
+                      }
+                      else{
+                        items.add(activeClothes[3]);
+                        activeClothes[3] = items[index];
+                        items.removeAt(index);
+                      }
+                    }
+
                   });
                   //_selectedItems.clear();
-                  equippedClothes = activeClothes;
                 });
+                equippedClothes = activeClothes;
                 _selectedItems.clear();
               },
               child: Text('Customize'),
@@ -89,11 +109,19 @@ Widget build(BuildContext context) {
             ElevatedButton(
               onPressed: () {
                 equippedClothes.forEach((item){
-                  items.add(item);
+                 if(item.clothingType != -1) {
+                    items.add(item);
+
+                  }
                 });
                 setState((){
-                  equippedClothes.clear();
+                  activeClothes[0] = defaultClothes;
+                  activeClothes[1] = defaultClothes;
+                  activeClothes[2] = defaultClothes;
+                  activeClothes[3] = defaultClothes;
+                  equippedClothes = activeClothes;
                 }
+
                 );
               },
               child: Text('Remove Clothes'),

@@ -97,12 +97,12 @@ Widget build(BuildContext context) {
                         items.removeAt(index);
                       }
                     }
-
                   });
-                  //_selectedItems.clear();
+                  _selectedItems.clear();
+                  equippedClothes = activeClothes;
                 });
-                equippedClothes = activeClothes;
-                _selectedItems.clear();
+                //equippedClothes = activeClothes;
+                //_selectedItems.clear();
               },
               child: Text('Customize'),
             ),

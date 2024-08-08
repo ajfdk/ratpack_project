@@ -8,6 +8,7 @@ class ScreenA extends StatefulWidget {
 }
 
 class _ScreenAState extends State<ScreenA> {
+  List<ClotheItem> activeClothes = equippedClothes;
   final List<ClotheItem> items = privateWardrobe;
 final Set<int> _selectedItems = {};
 
@@ -52,31 +53,36 @@ Widget build(BuildContext context) {
               onPressed: () {
                 setState(() {
                   _selectedItems.forEach((index) {
-                    int equipped = 0;
+                    int equippedIndicator = 0;
+                    int equippedIndex=0;
                     ClotheItem? equippedObject;
                     equippedClothes.forEach((ClotheObject){
                       if (items[index].clothingType == ClotheObject.clothingType) {
-                        equipped += 1;
+                        equippedIndicator += 1;
                         equippedObject = ClotheObject;
                       }
                       else{
+                        equippedIndex += 1;
                       }
                     });
-                    if(equipped == 0) {
-                      equippedClothes.add(items[index]);
+                    if(equippedIndicator == 0) {
+                      activeClothes.add(items[index]);
+                      equippedClothes = activeClothes;
                       items.removeAt(index);
-                      _selectedItems.clear();
                     }
                     else{
-                      equippedClothes.add(items[index]);
                       items.add(equippedObject!);
-                      equippedClothes.remove(equippedObject);
-                      _selectedItems.clear();
+                      activeClothes.add(items[index]);
+                      activeClothes.removeAt(equippedIndex);
+                      items.removeAt(index);
+                      equippedClothes?[1] = items[index];
+                      equippedClothes = activeClothes;
                     }
                   });
                   //_selectedItems.clear();
+                  equippedClothes = activeClothes;
                 });
-                //_selectedItems.clear();
+                _selectedItems.clear();
               },
               child: Text('Customize'),
             ),

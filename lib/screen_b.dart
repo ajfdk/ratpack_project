@@ -60,6 +60,22 @@ class _ScreenBState extends State<ScreenB> {
       price: 999,
       imagePath: 'assets/fries.png',
       description: '',
+    ),
+    ShopItem(
+      name: 'Sun Shirt',
+      type: 2,
+      clothingType: 3,
+      price: 10,
+      imagePath: 'assets/Shirt_yellow.png',
+      description: 'Yellow Shirt',
+    ),
+    ShopItem(
+      name: 'Dark Soul Shirt',
+      type: 2,
+      clothingType: 3,
+      price: 10,
+      imagePath: 'assets/Shirt_black.png',
+      description: 'Its black',
     )
   ];
 

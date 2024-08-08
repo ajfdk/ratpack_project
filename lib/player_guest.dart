@@ -2,7 +2,7 @@ import 'pet_object.dart';
 import 'item_model.dart';
 double points = 500;
 //Possibly switch to dictionaries, though not built in.
-final List<FoodItem> privatePantry = [];
+List<FoodItem> privatePantry = [];
 final List<ClotheItem> privateWardrobe = [];
 final List<ToyItem> privateToyBox = [];
 
@@ -16,7 +16,8 @@ ClotheItem defaultClothes = ClotheItem(
 List<ClotheItem> equippedClothes = [defaultClothes,defaultClothes,defaultClothes,defaultClothes];
 
 Pet playerPet = Pet(
-name: 'Yranib',
+  name: 'Yranib',
+  affection: 50,
   growth: 0,
   hunger: 50,
   age: 2,

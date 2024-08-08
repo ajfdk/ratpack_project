@@ -55,7 +55,7 @@ class ItemWidget extends StatelessWidget {
                 if (item is FoodItem) ...[
                   SizedBox(height: 4),
                   Flexible(
-                    child: Text('Health Points: ${(item as FoodItem).healthPoints}'),
+                    child: Text('Hunger Points: ${(item as FoodItem).hungerPoints}'),
                   ),
                 ],
                 if (item is ToyItem) ...[

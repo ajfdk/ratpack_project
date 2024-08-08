@@ -11,13 +11,13 @@ class Item {
 }
 
 class FoodItem extends Item {
-  final int? healthPoints;
+  final int? hungerPoints;
 
   FoodItem({
     required String name,
     required String imagePath,
     required String description,
-    required this.healthPoints,
+    required this.hungerPoints,
   }) : super(
     name: name,
     imagePath: imagePath,
@@ -59,7 +59,7 @@ class ToyItem extends Item {
 class ShopItem extends Item {
   final double price;
   final int? durability;
-  final int? healthPoints;
+  final int? hungerPoints;
   //type is an arbitrary value, 1 = food, 2 = clothes, 3 = toy
   final int type;
   final int? clothingType;
@@ -72,7 +72,7 @@ class ShopItem extends Item {
     required this.type,
     this.clothingType,
     this.durability,
-    this.healthPoints
+    this.hungerPoints
   }) : super(
     name: name,
     imagePath: imagePath,

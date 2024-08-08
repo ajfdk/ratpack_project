@@ -9,8 +9,7 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> {
-
-  final List<Item> items = privatePantry;
+  final List<FoodItem> items = privatePantry;
 
   final Set<int> _selectedItems = {};
 
@@ -18,7 +17,7 @@ class _Screen1State extends State<Screen1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen 1'),
+        title: Text('Pantry'),
       ),
       body: Column(
         children: [
@@ -55,11 +54,13 @@ class _Screen1State extends State<Screen1> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) {
+                      playerPet.hunger += items[index].hungerPoints!;
                       items.removeAt(index);
-                      privatePantry.remove(items[index]);
                     });
                     _selectedItems.clear();
                   });
+                  privatePantry = items;
+                  print(playerPet.hunger);
                 },
                 child: Text('Feed Pet'),
               ),
@@ -70,4 +71,6 @@ class _Screen1State extends State<Screen1> {
       ),
     );
   }
+
 }
+

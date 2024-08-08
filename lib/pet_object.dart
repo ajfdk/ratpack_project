@@ -1,13 +1,15 @@
 class Pet {
   final String name;
+  final int affection;
   final int growth;
-  final int hunger;
+  int hunger;
   final int age;
   final int happiness;
   final STATUS curstatus;
 
   Pet({
     required this.name,
+    required this.affection,
     required this.growth,
     required this.hunger,
     required this.age,

@@ -18,9 +18,11 @@ List<ClotheItem> equippedClothes = [defaultClothes,defaultClothes,defaultClothes
 Pet playerPet = Pet(
   name: 'Yranib',
   affection: 50,
+  energy: 50,
   growth: 0,
   hunger: 50,
   age: 2,
   happiness: 60,
-  curstatus: STATUS.ok
+  petType: 1,
+  curstatus: STATUS.hungry
 );

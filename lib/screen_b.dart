@@ -24,6 +24,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Tomogatchi',
       type: 3,
+      toyType: 1,
       durability: 100,
       price: 200,
       imagePath: 'assets/Tomogatchi.png',
@@ -154,6 +155,7 @@ class _ScreenBState extends State<ScreenB> {
                             name: (items[item] as ShopItem).name,
                             durability: (items[item] as ShopItem).durability,
                             imagePath: (items[item] as ShopItem).imagePath,
+                            toyType: (items[item] as ShopItem).toyType,
                             description: (items[item] as ShopItem).description,
 
                           );

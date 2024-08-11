@@ -92,17 +92,20 @@ class _ScreenCState extends State<ScreenC> {
                         playerPet.curstatus = STATUS.excited;
                         playerPet.happiness += 150;
                         playerPet.energy -= 25;
+                        playerPet.affection += 2;
                         items[index].durability = items[index].durability!-1;
                       }
                       else if(playerPet.curstatus == STATUS.bored || playerPet.petType == items[index].toyType){
                         playerPet.curstatus = STATUS.excited;
                         playerPet.happiness += 100;
                         playerPet.energy -= 20;
+                        playerPet.affection += 2;
                         items[index].durability = items[index].durability!-1;
                       }
                       else{
                         playerPet.happiness += 50;
                         playerPet.curstatus = STATUS.happy;
+                        playerPet.affection += 1;
                         items[index].durability = items[index].durability!-1;
                       }
                     });

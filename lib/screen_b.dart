@@ -49,7 +49,8 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Gummies',
       type: 1,
-      hungerPoints: 200,
+      foodType: 1,
+      hungerPoints: 10,
       price: 100,
       imagePath: 'assets/gummy.jpg',
       description: '',
@@ -57,7 +58,8 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'French Frys',
       type: 1,
-      hungerPoints: 30,
+      foodType: 2,
+      hungerPoints: 25,
       price: 999,
       imagePath: 'assets/fries.png',
       description: '',
@@ -133,6 +135,7 @@ class _ScreenBState extends State<ScreenB> {
                         if((items[item] as ShopItem).type == 1){
                           FoodItem tempFood = FoodItem(
                             name: (items[item] as ShopItem).name,
+                            foodType: (items[item] as ShopItem).foodType,
                             hungerPoints: (items[item] as ShopItem).hungerPoints,
                             imagePath: (items[item] as ShopItem).imagePath,
                             description: (items[item] as ShopItem).description,

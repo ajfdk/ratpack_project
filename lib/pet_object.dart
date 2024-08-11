@@ -1,6 +1,6 @@
 class Pet {
   final String name;
-  final int affection;
+  int affection;
   final int growth;
   int energy;
   int hunger;
@@ -24,4 +24,4 @@ class Pet {
   });
 }
 
-enum STATUS {great, happy, ok, tired, sick, hungry,bored,excited}
+enum STATUS {great, happy, ok, tired, sick, hungry,bored,excited, full,}

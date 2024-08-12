@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:tamagotchi/background.dart';
 
 class TimerScreen extends StatefulWidget {
   @override
@@ -84,10 +85,14 @@ class _TimerScreenState extends State<TimerScreen> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Timer'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Timer'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+        ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -148,6 +153,7 @@ class _TimerScreenState extends State<TimerScreen> with SingleTickerProviderStat
           ],
         ),
       ),
+    ),
     );
   }
 }

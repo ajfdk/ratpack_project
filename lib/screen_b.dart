@@ -41,7 +41,7 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Grill Cheese',
       type: 1,
-      hungerPoints: 150,
+      hungerPoints: 25,
       price: 50,
       imagePath: 'assets/grilledcheese.jpg',
       description: '',

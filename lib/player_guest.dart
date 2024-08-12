@@ -26,5 +26,5 @@ Pet playerPet = Pet(
   petType: 1,
   petSpriteHead: 'mogus_head.png',
   petSpriteLegs: 'mogus_legs.png',
-  curstatus: STATUS.hungry
+  curstatus: STATUS.bored
 );

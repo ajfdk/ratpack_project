@@ -55,6 +55,7 @@ class _Screen1State extends State<Screen1> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) {
+                      print((playerPet.hunger + items[index].hungerPoints!));
                       if((playerPet.hunger + items[index].hungerPoints!) > 100){
                         showDialog(
                           context: context,
@@ -76,13 +77,13 @@ class _Screen1State extends State<Screen1> {
                         playerPet.hunger += items[index].hungerPoints!;
                         playerPet.happiness += 10;
                         playerPet.affection += 2;
-                        if(playerPet.hunger ==100){
+                        if(playerPet.hunger == 100 && playerPet.hunger > 50){
                           playerPet.curstatus = STATUS.full;
                         }
-                        else if(playerPet.hunger >50){
+                        else if(playerPet.hunger <= 50 && playerPet.hunger > 25){
                           playerPet.curstatus = STATUS.ok;
                         }
-                        else if(playerPet.hunger > 25){
+                        else if(playerPet.hunger <= 25){
                           playerPet.curstatus = STATUS.hungry;
                         }
                         items.removeAt(index);
@@ -91,13 +92,13 @@ class _Screen1State extends State<Screen1> {
                         playerPet.hunger += items[index].hungerPoints!;
                         playerPet.happiness += 5;
                         playerPet.affection += 1;
-                        if(playerPet.hunger ==100){
+                        if(playerPet.hunger == 100 && playerPet.hunger > 50){
                           playerPet.curstatus = STATUS.full;
                         }
-                        else if(playerPet.hunger >50){
+                        else if(playerPet.hunger <= 50 && playerPet.hunger > 25){
                           playerPet.curstatus = STATUS.ok;
                         }
-                        else if(playerPet.hunger > 25){
+                        else if(playerPet.hunger <= 25){
                           playerPet.curstatus = STATUS.hungry;
                         }
                         items.removeAt(index);

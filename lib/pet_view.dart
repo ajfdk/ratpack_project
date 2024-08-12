@@ -15,7 +15,7 @@ late spriteLegs petMobLegs;
 double legsX = 145;
 double legsY = 160;
 //double spriteSize = 175;
-double spriteSize = 100;
+double spriteSize = 75;
 class PetView extends FlameGame{
   Future<void> onLoad() async {
     super.onLoad();
@@ -23,7 +23,7 @@ class PetView extends FlameGame{
     // pet_mob = Sprite(petImage);
     add(ScreenHitbox());
     petMobHead = spriteHead()
-      ..position = Vector2(legsX, legsY-90)
+      ..position = Vector2(legsX, legsY-75)
       ..size = Vector2(spriteSize, spriteSize);
     petMobLegs = spriteLegs()
       ..position = Vector2(legsX,legsY)

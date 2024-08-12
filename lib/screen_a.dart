@@ -129,7 +129,8 @@ Widget build(BuildContext context) {
                     playerPet.petSpriteLegs = 'mogus_legs.png';
                   }
                   if(activeClothes[2].name=="Dark Soul Shirt"){
-                    playerPet.petSpriteHead = "mogus_Shirt_black.png";
+                    print("equipping shirt");
+                    playerPet.petSpriteHead = "mogus_head_Shirt_black.png";
                     print(playerPet.petSpriteHead);
                   }
                   else{

@@ -3,6 +3,7 @@ import 'item_model.dart';
 import 'item_widget.dart';
 import 'player_guest.dart';
 import 'pet_object.dart';
+import 'pet_view.dart';
 class ScreenC extends StatefulWidget {
   @override
   _ScreenCState createState() => _ScreenCState();
@@ -10,7 +11,6 @@ class ScreenC extends StatefulWidget {
 
 class _ScreenCState extends State<ScreenC> {
   final List<ToyItem> items = privateToyBox;
-
   final Set<int> _selectedItems = {};
 
   @override

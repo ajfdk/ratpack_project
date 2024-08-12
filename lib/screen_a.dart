@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/pet_view.dart';
+import 'gameScreen.dart';
 import 'item_model.dart';
 import 'item_widget.dart';
 import 'player_guest.dart';
+import 'package:flame/game.dart';
+import 'pet_view.dart';
 class ScreenA extends StatefulWidget {
   @override
  _ScreenAState createState() => _ScreenAState();
@@ -20,6 +24,24 @@ Widget build(BuildContext context) {
     ),
     body: Column(
       children: [
+        Center(
+          child: Container(
+            height: 350,
+           // child: Column(
+      padding: EdgeInsets.all(20),
+      child: GameWidget(
+        game: PetView(),
+        backgroundBuilder: (context) => Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/grasstiles.png"),
+                  fit: BoxFit.cover)),
+        ),
+      ),
+            )
+          ),
+    //child: GameWidget(
+    //game: PetView(),)
         Expanded(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

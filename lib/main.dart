@@ -6,7 +6,7 @@ import 'screen2.dart';
 import 'settings_screen.dart';
 import 'theme_provider.dart';
 import 'pin_screen.dart';
-
+import 'pet_view.dart';
 void main() {
   runApp(MyApp());
 }

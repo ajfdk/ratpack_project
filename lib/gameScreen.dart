@@ -48,7 +48,7 @@ class IdleSprite extends SpriteComponent with CollisionCallbacks {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    sprite = await Sprite.load(playerPet.petSprite);
+    sprite = await Sprite.load(playerPet.petSpriteLegs);
     add(RectangleHitbox());
   }
 

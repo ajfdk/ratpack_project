@@ -24,6 +24,7 @@ Pet playerPet = Pet(
   age: 2,
   happiness: 60,
   petType: 1,
-  petSprite: 'mogus.png',
+  petSpriteHead: 'mogus_head.png',
+  petSpriteLegs: 'mogus_legs.png',
   curstatus: STATUS.hungry
 );

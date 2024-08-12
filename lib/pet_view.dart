@@ -9,22 +9,31 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 
-late IdleSprite petMob;
+late spriteHead petMobHead;
+late spriteLegs petMobLegs;
 
+double legsX = 145;
+double legsY = 160;
+//double spriteSize = 175;
+double spriteSize = 100;
 class PetView extends FlameGame{
   Future<void> onLoad() async {
     super.onLoad();
-    // final petImage = await images.load('mogus.png');
+    //final petImage = await images.load('mogus.png');
     // pet_mob = Sprite(petImage);
     add(ScreenHitbox());
-    petMob = IdleSprite()
-      ..position = Vector2(100, 50)
-      ..size = Vector2(175, 175);
-    add(petMob);
+    petMobHead = spriteHead()
+      ..position = Vector2(legsX, legsY-90)
+      ..size = Vector2(spriteSize, spriteSize);
+    petMobLegs = spriteLegs()
+      ..position = Vector2(legsX,legsY)
+      ..size = Vector2(spriteSize,spriteSize);
+    add(petMobHead);
+    add(petMobLegs);
   }
   }
 
-class IdleSprite extends SpriteComponent with CollisionCallbacks {
+class spriteHead extends SpriteComponent with CollisionCallbacks {
   static const double speed = 100;
   Vector2 direction = Vector2.zero();
   bool isMoving = false;
@@ -34,7 +43,22 @@ class IdleSprite extends SpriteComponent with CollisionCallbacks {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    sprite = await Sprite.load(playerPet.petSprite);
+    sprite = await Sprite.load(playerPet.petSpriteHead);
+    add(RectangleHitbox());
+  }
+}
+class spriteLegs extends SpriteComponent with CollisionCallbacks {
+  static const double speed = 100;
+  Vector2 direction = Vector2.zero();
+  bool isMoving = false;
+  double timeToChangeDirection = 2.0;
+  double timePassed = 0.0;
+
+  @override
+  Future<void> onLoad() async {
+    super.onLoad();
+    sprite = await Sprite.load(playerPet.petSpriteLegs);
+    //sprite = await Sprite.load(playerPet.petSpriteLegs);
     add(RectangleHitbox());
   }
 }

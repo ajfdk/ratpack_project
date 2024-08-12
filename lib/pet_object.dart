@@ -9,7 +9,8 @@ class Pet {
   //arbitrary pet type for indicating item compatability
   //values to be determined on pet design.
   final int petType;
-  String petSprite;
+  String petSpriteHead;
+  String petSpriteLegs;
   STATUS curstatus;
 
   Pet({
@@ -21,7 +22,8 @@ class Pet {
     required this.age,
     required this.happiness,
     required this.petType,
-    required this.petSprite,
+    required this.petSpriteHead,
+    required this.petSpriteLegs,
     required this.curstatus
   });
 }

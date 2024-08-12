@@ -121,11 +121,20 @@ Widget build(BuildContext context) {
                     }
                   });
                   if(activeClothes[1].name == "Pants"){
-                    playerPet.petSprite = 'mogus_pants.png';
+                    playerPet.petSpriteLegs = 'mogus_legs_pants.png';
                     print("changed");
+                    print(playerPet.petSpriteLegs);
                   }
                   else{
-                    playerPet.petSprite = 'mogus.png';
+                    playerPet.petSpriteLegs = 'mogus_legs.png';
+                  }
+                  if(activeClothes[2].name=="Dark Soul Shirt"){
+                    playerPet.petSpriteHead = "mogus_Shirt_black.png";
+                    print(playerPet.petSpriteHead);
+                  }
+                  else{
+                    playerPet.petSpriteHead = 'mogus_head.png';
+                    print(activeClothes[2].name);
                   }
                   _selectedItems.clear();
                   equippedClothes = activeClothes;

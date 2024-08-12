@@ -1,84 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:tamagotchi/main.dart';
+import 'package:tamagotchi/background.dart';
 
-class Screen2 extends StatefulWidget{
-  @override
-  _Screen2State createState() => _Screen2State();
-}
-class _Screen2State extends State<Screen2> {
-  int pointsShop = MyHomePage().points;
+class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Store'),
-        bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4.0),
-            child:Text.rich(
-                TextSpan(
-                    text: "Points: " + pointsShop.toString()
-                )
-
-            )
-        ),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('To-Do List'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(8.0),
-              child: IconButton(
-                iconSize: 10,
-                icon: Image.asset('assets/ShirtS.png'),
-                tooltip: "Shwanky Shirt: 10 points",
-                onPressed: () {
-                  //var LocalPoints = MyHomePage().points;
-                  //Navigator.push(
-                  //context,
-                  //MaterialPageRoute(builder: (context) => MyHomePage()),
-
-                  //);
-                  //MyHomePage().points-=10;
-                  print(pointsShop.toString());
-                  setState(() => pointsShop -=10);
-                  //setState(() => pointsText = pointsShop.toString());
-                  _Screen2State();
-                },
-              ),
-
-
-              //child: Image.asset('images/Shirt.png'),
-            ),
-            Text("Shirt: 10 Pogger Points"),
-
-            Container(
-              margin: EdgeInsets.all(8.0),
-              child: IconButton(
-                iconSize: 10,
-                icon: Image.asset('assets/PantS.png'),
-                tooltip: "Pretty Pant: 30 points",
-                onPressed: () {
-                  //var LocalPoints = MyHomePage().points;
-                  //Navigator.push(
-                  //context,
-                  //MaterialPageRoute(builder: (context) => MyHomePage()),
-
-                  //);
-                  //MyHomePage().points-=10;
-                  print(pointsShop.toString());
-                  setState(() => pointsShop -=30);
-                  //setState(() => pointsText = pointsShop.toString());
-                  _Screen2State();
-                },
-              ),
-              //child: Image.asset('images/Shirt.png'),
-            ),
-            Text("Pant: 30 Pogger Points"),
-          ],
-        ),
-
+        child: Text('Place To-do List here'),
       ),
+    ),
     );
   }
 }

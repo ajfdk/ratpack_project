@@ -3,11 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/material.dart';
-import 'item_model.dart';
-import 'item_widget.dart';
 import 'player_guest.dart';
-import 'pet_object.dart';
 class PetRoomGame extends FlameGame with HasCollisionDetection, HasGameRef{
   late IdleSprite petMob;
 
@@ -52,7 +48,7 @@ class IdleSprite extends SpriteComponent with CollisionCallbacks {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    sprite = await Sprite.load('mogus.png');
+    sprite = await Sprite.load(playerPet.petSprite);
     add(RectangleHitbox());
   }
 

@@ -120,6 +120,13 @@ Widget build(BuildContext context) {
                       }
                     }
                   });
+                  if(activeClothes[1].name == "Pants"){
+                    playerPet.petSprite = 'mogus_pants.png';
+                    print("changed");
+                  }
+                  else{
+                    playerPet.petSprite = 'mogus.png';
+                  }
                   _selectedItems.clear();
                   equippedClothes = activeClothes;
                 });

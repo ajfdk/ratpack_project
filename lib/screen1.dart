@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
 import 'item_model.dart';
 import 'item_widget.dart';
 
@@ -45,10 +46,14 @@ class _Screen1State extends State<Screen1> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Screen 1'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Refridgerator'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Column(
         children: [
           Expanded(
@@ -96,6 +101,7 @@ class _Screen1State extends State<Screen1> {
           SizedBox(height: 16.0),
         ],
       ),
+    ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
 import 'item_model.dart';
 import 'item_widget.dart';
 
@@ -32,13 +33,18 @@ class _ScreenAState extends State<ScreenA> {
   ];
 
 final Set<int> _selectedItems = {};
+//final Set<int> _inUseItems = {};
 
 @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Clothes'),
-    ),
+  return BackgroundContainer(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text('Clothes'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
     body: Column(
       children: [
         Expanded(
@@ -51,6 +57,7 @@ Widget build(BuildContext context) {
             itemCount: items.length,
             itemBuilder: (context, index) {
               final isSelected = _selectedItems.contains(index);
+              //final isInUse = _inUseItems.contains(index);
               return ItemWidget(
                 item: items[index],
                 isSelected: isSelected,
@@ -86,6 +93,7 @@ Widget build(BuildContext context) {
         SizedBox(height: 16.0),
       ],
     ),
+  ),
   );
  }
 }

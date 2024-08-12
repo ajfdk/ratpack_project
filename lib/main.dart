@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tamagotchi/points_storage.dart';
 import 'intermediate_screen.dart';
 import 'screen2.dart';
@@ -11,24 +12,27 @@ import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // get saved preferences from shared_preferences
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isDarkTheme = prefs.getBool("theme") ?? false;
+
+  runApp(
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (_) => ThemeProvider(isDarkTheme),
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ThemeProvider(ThemeData.light()),
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: themeProvider.themeData,
-            home: MyHomePage(),
-          );
-        },
-      ),
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    return MaterialApp(
+      theme: themeProvider.isDarkTheme ? ThemeData.dark() : ThemeData.light(),
+      home: MyHomePage(),
     );
   }
 }
@@ -41,7 +45,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Screen'),
+        title: const Text('Main Screen'),
       ),
       body: Center(
         child: Column(
@@ -54,7 +58,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => IntermediateScreen()),
                 );
               },
-              child: Text('Play Screen'),
+              child: const Text('Play Screen'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -63,7 +67,7 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Screen2()),
                 );
               },
-              child: Text('To-Do List'),
+              child: const Text('To-Do List'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -82,7 +86,7 @@ class MyHomePage extends StatelessWidget {
                   );
                 }
               },
-              child: Text('Go to Settings'),
+              child: const Text('Go to Settings'),
             ),
           ],
         ),

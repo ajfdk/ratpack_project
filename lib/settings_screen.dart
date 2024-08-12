@@ -8,29 +8,35 @@ class SettingsScreen extends StatelessWidget {
   final PointsStorage storage = PointsStorage();
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: ListView(
         children: [
           SwitchListTile(
-            title: Text('Enable Notifications'),
+            title: const Text('Enable Notifications'),
             value: Provider.of<ThemeProvider>(context).notificationsEnabled,
             onChanged: (bool value) {
               Provider.of<ThemeProvider>(context, listen: false).toggleNotifications();
             },
           ),
           SwitchListTile(
-            title: Text('Enable Dark Mode'),
-            value: Provider.of<ThemeProvider>(context).themeData == ThemeData.dark(),
+            title: const Text('Enable Dark Mode'),
+            value: themeNotifier.isDarkTheme,
             onChanged: (bool value) {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+              themeNotifier.toggleTheme();
             },
+            secondary: Icon(
+              themeNotifier.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
+            ),
           ),
+
           ListTile(
-            title: Text('Account Settings'),
-            trailing: Icon(Icons.arrow_forward),
+            title: const Text('Account Settings'),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
@@ -39,8 +45,8 @@ class SettingsScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('Parental Controls'),
-            trailing: Icon(Icons.arrow_forward),
+            title: const Text('Parental Controls'),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
@@ -49,7 +55,7 @@ class SettingsScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text('DELETE APPDATA'),
+            title: const Text('DELETE APPDATA'),
             tileColor: Colors.red,
             onTap: storage.deleteDocumentsDirectory,
           )
@@ -64,9 +70,9 @@ class AccountSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account Settings'),
+        title: const Text('Account Settings'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Account Settings Page'),
       ),
     );

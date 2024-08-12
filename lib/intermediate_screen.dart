@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
 import 'package:tamagotchi/screen2.dart';
 import 'package:tamagotchi/settings_screen.dart';
 import 'package:tamagotchi/main.dart';
@@ -19,18 +20,25 @@ class IntermediateScreen extends StatelessWidget {
   int points = 20000;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Play Screen'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Play Screen'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
                 icon: Image.asset('assets/todo.png'),
-                iconSize: 10,
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -38,9 +46,13 @@ class IntermediateScreen extends StatelessWidget {
                   );
                 }
               ),
-              IconButton(
+              ),
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
                 icon: Image.asset('assets/timer.png'),
-                iconSize: 10,
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -48,9 +60,13 @@ class IntermediateScreen extends StatelessWidget {
                   );
                 },
               ),
-              IconButton(
+              ),
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
                 icon: Image.asset('assets/settings.png'),
-                iconSize: 10,
+                iconSize: 20,
                 onPressed: () {
                   bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
                   if (pinProtectionEnabled) {
@@ -66,6 +82,7 @@ class IntermediateScreen extends StatelessWidget {
                   }
                 },
               ),
+              ),
             ],
           ),
           Expanded(
@@ -76,9 +93,12 @@ class IntermediateScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              IconButton(
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: IconButton(
                 icon: Image.asset('assets/clothes.png'),
-                iconSize: 10,
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -86,9 +106,13 @@ class IntermediateScreen extends StatelessWidget {
                   );
                 },
               ),
-              IconButton(
+              ),
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: IconButton(
                 icon: Image.asset('assets/toys.png'),
-                iconSize: 10,
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -96,14 +120,18 @@ class IntermediateScreen extends StatelessWidget {
                   );
                 },
               ),
+              ),
               ],
               ),
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: IconButton(
                   icon: Image.asset('assets/food.png'),
-                  iconSize: 10,
+                  iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -111,9 +139,13 @@ class IntermediateScreen extends StatelessWidget {
                   );
                 },
               ),
-                IconButton(
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: IconButton(
                   icon: Image.asset('assets/shop.png'),
-                  iconSize: 10,
+                  iconSize: 20,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -121,11 +153,13 @@ class IntermediateScreen extends StatelessWidget {
                     );
                   },
                 ),
+                ),
             ],
           ),
           SizedBox(height: 16.0),
         ],
       ),
+     ),
     );
   }
 }

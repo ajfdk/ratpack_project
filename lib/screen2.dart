@@ -17,7 +17,7 @@ class _ListObject {
 }
 
 class _Screen2State extends State<Screen2> {
-  final todolist = <_ListObject>[];
+  var todolist = <_ListObject>[];
   var todolistPrint = <String?>[];
   int itemNum = 0;
   void _timeCheck(_ListObject listObject) {

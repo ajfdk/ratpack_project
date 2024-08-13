@@ -6,7 +6,7 @@ class ThemeProvider extends ChangeNotifier {
   bool _notificationsEnabled = false;
   bool _pinProtectionEnabled = false;
   String _pin = '1234'; // Default PIN
-  String _backgroundImage = 'assets/dino.jpg'; // Default background
+  String _backgroundImage = 'assets/weather.webp'; // Default background
   String _currentUser = 'parent'; // Default user
 
   ThemeProvider(this._themeData) {
@@ -57,7 +57,7 @@ class ThemeProvider extends ChangeNotifier {
 
   void _loadPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _backgroundImage = prefs.getString('${_currentUser}_backgroundImage') ?? 'assets/dino.jpg';
+    _backgroundImage = prefs.getString('${_currentUser}_backgroundImage') ?? 'assets/weather.webp';
     _themeData = (prefs.getBool('${_currentUser}_isDarkMode') ?? false) ? ThemeData.dark() : ThemeData.light();
     _pinProtectionEnabled = prefs.getBool('pin_protection_enabled') ?? false;
     _pin = prefs.getString('parent_pin') ?? '1234';

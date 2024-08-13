@@ -79,47 +79,96 @@ Widget build(BuildContext context) {
                       if(activeClothes[0].clothingType == -1) {
                         activeClothes[0] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[0].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[0].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                       else{
                         items.add(activeClothes[0]);
                         activeClothes[0] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[0].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[0].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                     }
                     else if(items[index].clothingType == 1){
                       if(activeClothes[1].clothingType == -1) {
                         activeClothes[1] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[1].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[1].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                       else{
                         items.add(activeClothes[1]);
                         activeClothes[1] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[1].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[1].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                     }
                     else if(items[index].clothingType == 2){
                       if(activeClothes[2].clothingType == -1) {
                         activeClothes[2] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[2].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteHead = playerPet.petSpecies + "/" +
+                              activeClothes[2].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                       else{
                         items.add(activeClothes[2]);
                         activeClothes[2] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[2].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteHead = playerPet.petSpecies + "/" +
+                              activeClothes[2].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                     }
                     else if(items[index].clothingType == 3){
                       if(activeClothes[3].clothingType == -1) {
                         activeClothes[3] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[3].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[3].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                       else{
                         items.add(activeClothes[3]);
                         activeClothes[3] = items[index];
                         items.removeAt(index);
+                        if(activeClothes[3].spriteImagePath != "COCONUT_NULL.jpg") {
+                          playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                              activeClothes[3].spriteImagePath!;
+                          print("changed");
+                          print(activeClothes);
+                        }
                       }
                     }
                   });
+                  /*
                   if (activeClothes[0].spriteImagePath !=
                         "COCONUT_NULL.jpg") {
                     }
@@ -143,6 +192,8 @@ Widget build(BuildContext context) {
                       "COCONUT_NULL.jpg") {
                     //print(playerPet.petSpriteLegs);
                   }
+
+                   */
                   });
                 //equippedClothes = activeClothes;
                 _selectedItems.clear();

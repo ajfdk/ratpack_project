@@ -31,11 +31,13 @@ class ClotheItem extends Item {
   //arbitrary int to represent what segment of the body the clothing applies to,
   //0 = shoes, 1 = pants, 2 = shirt, 3 = hat
   final int? clothingType;
+  final String? spriteImagePath;
   ClotheItem({
     required String name,
     required String imagePath,
     required String description,
     required this.clothingType,
+    required this.spriteImagePath
   }) : super(
     name: name,
     imagePath: imagePath,
@@ -69,6 +71,7 @@ class ShopItem extends Item {
   final int? clothingType;
   final int? toyType;
   final int? foodType;
+  final String? spriteImagePath;
 
   ShopItem({
     required String name,
@@ -80,7 +83,8 @@ class ShopItem extends Item {
     this.durability,
     this.hungerPoints,
     this.toyType,
-    this.foodType
+    this.foodType,
+    this.spriteImagePath
   }) : super(
     name: name,
     imagePath: imagePath,

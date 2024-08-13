@@ -19,6 +19,7 @@ class _ScreenBState extends State<ScreenB> {
       clothingType: 1,
       price: 10,
       imagePath: 'assets/PantS.png',
+      spriteImagePath: 'pants.png',
       description: 'Pants for not being naked',
     ),
     ShopItem(
@@ -36,6 +37,7 @@ class _ScreenBState extends State<ScreenB> {
       clothingType: 1,
       price: 10,
       imagePath: 'assets/Jeans.png',
+      spriteImagePath: 'COCONUT_NULL.jpg',
       description: 'For style',
     ),
     ShopItem(
@@ -70,6 +72,7 @@ class _ScreenBState extends State<ScreenB> {
       clothingType: 2,
       price: 10,
       imagePath: 'assets/Shirt_yellow.png',
+      spriteImagePath: 'COCONUT_NULL.jpg',
       description: 'Yellow Shirt',
     ),
     ShopItem(
@@ -78,6 +81,7 @@ class _ScreenBState extends State<ScreenB> {
       clothingType: 2,
       price: 10,
       imagePath: 'assets/Shirt_black.png',
+      spriteImagePath: 'Shirt_black.png',
       description: 'Its black',
     )
   ];
@@ -148,6 +152,7 @@ class _ScreenBState extends State<ScreenB> {
                               name: (items[item] as ShopItem).name,
                               clothingType: (items[item] as ShopItem).clothingType,
                               imagePath: (items[item] as ShopItem).imagePath,
+                              spriteImagePath: (items[item] as ShopItem).spriteImagePath,
                               description: (items[item] as ShopItem).description,
                           );
                           privateWardrobe.add(tempClothe);

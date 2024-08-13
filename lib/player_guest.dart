@@ -10,6 +10,7 @@ ClotheItem defaultClothes = ClotheItem(
   name: 'DEFAULT',
   clothingType: -1,
   imagePath: 'assets/COCONUT_NULL.jpg',
+  spriteImagePath: "COCONUT_NULL.jpg",
   description: 'DEVELOPER DEFAULT',
 );
 //This list will eventually go in the pet object. Temp here for testing.
@@ -24,7 +25,8 @@ Pet playerPet = Pet(
   age: 2,
   happiness: 60,
   petType: 1,
-  petSpriteHead: 'mogus_head.png',
-  petSpriteLegs: 'mogus_legs.png',
+  petSpecies: 'mogus',
+  petSpriteHead: "mogus/head.png",
+  petSpriteLegs: "mogus/legs.png",
   curstatus: STATUS.bored
 );

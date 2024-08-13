@@ -120,28 +120,32 @@ Widget build(BuildContext context) {
                       }
                     }
                   });
-                  if(activeClothes[1].name == "Pants"){
-                    playerPet.petSpriteLegs = 'mogus_legs_pants.png';
+                  if (activeClothes[0].spriteImagePath !=
+                        "COCONUT_NULL.jpg") {
+                    }
+                  if (activeClothes[1].spriteImagePath !=
+                      "COCONUT_NULL.jpg") {
+                    playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
+                        activeClothes[1].spriteImagePath!;
                     print("changed");
-                    print(playerPet.petSpriteLegs);
+                    print(activeClothes);
+                    //print(playerPet.petSpriteLegs);
                   }
-                  else{
-                    playerPet.petSpriteLegs = 'mogus_legs.png';
-                  }
-                  if(activeClothes[2].name=="Dark Soul Shirt"){
-                    print("equipping shirt");
-                    playerPet.petSpriteHead = "mogus_head_Shirt_black.png";
+                  if (activeClothes[2].spriteImagePath !=
+                      "COCONUT_NULL.jpg") {
+                    playerPet.petSpriteHead = playerPet.petSpecies + "/" +
+                        activeClothes[2].spriteImagePath!;
+                    print("changed");
                     print(playerPet.petSpriteHead);
+                    print(activeClothes);
                   }
-                  else{
-                    playerPet.petSpriteHead = 'mogus_head.png';
-                    print(activeClothes[2].name);
+                  if (activeClothes[3].spriteImagePath !=
+                      "COCONUT_NULL.jpg") {
+                    //print(playerPet.petSpriteLegs);
                   }
-                  _selectedItems.clear();
-                  equippedClothes = activeClothes;
-                });
+                  });
                 //equippedClothes = activeClothes;
-                //_selectedItems.clear();
+                _selectedItems.clear();
               },
               child: Text('Customize'),
             ),
@@ -159,6 +163,8 @@ Widget build(BuildContext context) {
                   activeClothes[2] = defaultClothes;
                   activeClothes[3] = defaultClothes;
                   equippedClothes = activeClothes;
+                  playerPet.petSpriteHead = playerPet.petSpecies+"/"+"head.png";
+                  playerPet.petSpriteLegs = playerPet.petSpecies+"/"+"legs.png";
                 }
 
                 );

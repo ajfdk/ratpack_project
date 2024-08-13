@@ -75,6 +75,7 @@ Widget build(BuildContext context) {
               onPressed: () {
                 setState(() {
                   _selectedItems.forEach((index) {
+                    //print(_selectedItems.length);
                     if(items[index].clothingType == 0){
                       if(activeClothes[0].clothingType == -1) {
                         activeClothes[0] = items[index];
@@ -191,6 +192,7 @@ Widget build(BuildContext context) {
                   equippedClothes = activeClothes;
                   playerPet.petSpriteHead = playerPet.petSpecies+"/"+"head.png";
                   playerPet.petSpriteLegs = playerPet.petSpecies+"/"+"legs.png";
+                  _selectedItems.clear();
                 }
 
                 );

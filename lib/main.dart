@@ -5,6 +5,7 @@ import 'intermediate_screen.dart';
 //import 'settings_screen.dart';
 import 'theme_provider.dart';
 //import 'pin_screen.dart';
+import 'login.dart';
 
 /*void main() {
   runApp(MyApp());

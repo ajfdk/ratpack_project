@@ -167,33 +167,8 @@ Widget build(BuildContext context) {
                         }
                       }
                     }
+                    index = 0;
                   });
-                  /*
-                  if (activeClothes[0].spriteImagePath !=
-                        "COCONUT_NULL.jpg") {
-                    }
-                  if (activeClothes[1].spriteImagePath !=
-                      "COCONUT_NULL.jpg") {
-                    playerPet.petSpriteLegs = playerPet.petSpecies + "/" +
-                        activeClothes[1].spriteImagePath!;
-                    print("changed");
-                    print(activeClothes);
-                    //print(playerPet.petSpriteLegs);
-                  }
-                  if (activeClothes[2].spriteImagePath !=
-                      "COCONUT_NULL.jpg") {
-                    playerPet.petSpriteHead = playerPet.petSpecies + "/" +
-                        activeClothes[2].spriteImagePath!;
-                    print("changed");
-                    print(playerPet.petSpriteHead);
-                    print(activeClothes);
-                  }
-                  if (activeClothes[3].spriteImagePath !=
-                      "COCONUT_NULL.jpg") {
-                    //print(playerPet.petSpriteLegs);
-                  }
-
-                   */
                   });
                 //equippedClothes = activeClothes;
                 _selectedItems.clear();

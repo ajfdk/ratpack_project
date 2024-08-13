@@ -7,20 +7,18 @@ class ThemeProvider extends ChangeNotifier {
   bool _pinProtectionEnabled = false;
   String _pin = '1234'; // Default PIN
   String _backgroundImage = 'assets/dino.jpg'; // Default background
+  String _currentUser = 'parent'; // Default user
 
   ThemeProvider(this._themeData) {
     _loadPreferences();
   }
 
   ThemeData get themeData => _themeData;
-
   bool get notificationsEnabled => _notificationsEnabled;
-
   bool get pinProtectionEnabled => _pinProtectionEnabled;
-
   String get pin => _pin;
-
   String get backgroundImage => _backgroundImage;
+  String get currentUser => _currentUser;
 
   void toggleTheme() {
     if (_themeData == ThemeData.light()) {
@@ -52,15 +50,25 @@ class ThemeProvider extends ChangeNotifier {
     _savePreferences();
   }
 
+  void setCurrentUser(String user) {
+    _currentUser = user;
+    _loadPreferences();
+  }
+
   void _loadPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _backgroundImage =
-        prefs.getString('backgroundImage') ?? 'assets/dino.jpg';
+    _backgroundImage = prefs.getString('${_currentUser}_backgroundImage') ?? 'assets/dino.jpg';
+    _themeData = (prefs.getBool('${_currentUser}_isDarkMode') ?? false) ? ThemeData.dark() : ThemeData.light();
+    _pinProtectionEnabled = prefs.getBool('pin_protection_enabled') ?? false;
+    _pin = prefs.getString('parent_pin') ?? '1234';
     notifyListeners();
   }
 
   void _savePreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('backgroundImage', _backgroundImage);
+    await prefs.setString('${_currentUser}_backgroundImage', _backgroundImage);
+    await prefs.setBool('${_currentUser}_isDarkMode', _themeData == ThemeData.dark());
+    await prefs.setBool('pin_protection_enabled', _pinProtectionEnabled);
+    await prefs.setString('parent_pin', _pin);
   }
 }

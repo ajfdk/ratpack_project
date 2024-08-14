@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/main.dart';
 import 'package:tamagotchi/background.dart';
 
 class Screen2 extends StatefulWidget{
@@ -17,7 +18,7 @@ class _ListObject {
 }
 
 class _Screen2State extends State<Screen2> {
-  final todolist = <_ListObject>[];
+  var todolist = <_ListObject>[];
   var todolistPrint = <String?>[];
   int itemNum = 0;
   void _timeCheck(_ListObject listObject) {
@@ -60,17 +61,15 @@ class _Screen2State extends State<Screen2> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text('To Do List'),
-      ),
-      body: Center(
+    return BackgroundContainer(
+        child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+        title: Text('To-Do List'),
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+    ),
+    body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -107,21 +106,7 @@ class _Screen2State extends State<Screen2> {
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-  @override
-  Widget build(BuildContext context) {
-    return BackgroundContainer(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            title: Text('To-Do List'),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
-      body: Center(
-        child: Text('Place To-do List here'),
-      ),
     ),
-
     );
   }
 }

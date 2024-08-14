@@ -13,6 +13,8 @@ class Pet {
   String petSpriteHead;
   String petSpriteLegs;
   STATUS curstatus;
+  late DateTime lastTask;
+  late List taskList;
 
   Pet({
     required this.name,

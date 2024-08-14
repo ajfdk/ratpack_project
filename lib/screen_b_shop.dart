@@ -28,27 +28,39 @@ class _ScreenBState extends State<ScreenB> {
   }
 
   double cartCost = 0;
-
+  double pointsShop = points;
   final List<Item> items = [
     ShopItem(
       name: 'Pants',
       type: 2,
+      clothingType: 1,
       price: 10,
       imagePath: 'assets/PantS.png',
-      description: 'Pants are gloves for your legs.',
+      spriteImagePath: 'pants.png',
+      description: 'Pants for not being naked',
     ),
     ShopItem(
       name: 'Tamagotchi',
       type: 3,
+      toyType: 1,
       durability: 100,
       price: 200,
       imagePath: 'assets/Tomogatchi.png',
       description: '',
     ),
     ShopItem(
+      name: 'Jeans',
+      type: 2,
+      clothingType: 1,
+      price: 10,
+      imagePath: 'assets/Jeans.png',
+      spriteImagePath: 'jeans.png',
+      description: 'For style',
+    ),
+    ShopItem(
       name: 'Grill Cheese',
       type: 1,
-      healthPoints: 150,
+      hungerPoints: 25,
       price: 50,
       imagePath: 'assets/grilledcheese.jpg',
       description: '',
@@ -56,7 +68,8 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'Gummies',
       type: 1,
-      healthPoints: 200,
+      foodType: 1,
+      hungerPoints: 10,
       price: 100,
       imagePath: 'assets/gummy.jpg',
       description: '',
@@ -64,10 +77,29 @@ class _ScreenBState extends State<ScreenB> {
     ShopItem(
       name: 'French Fries',
       type: 1,
-      healthPoints: 30,
+      foodType: 2,
+      hungerPoints: 25,
       price: 999,
       imagePath: 'assets/fries.png',
       description: '',
+    ),
+    ShopItem(
+      name: 'Sun Shirt',
+      type: 2,
+      clothingType: 2,
+      price: 10,
+      imagePath: 'assets/Shirt_yellow.png',
+      spriteImagePath: 'Shirt_yellow.png',
+      description: 'Yellow Shirt',
+    ),
+    ShopItem(
+      name: 'Dark Soul Shirt',
+      type: 2,
+      clothingType: 2,
+      price: 10,
+      imagePath: 'assets/Shirt_black.png',
+      spriteImagePath: 'Shirt_black.png',
+      description: 'Its black',
     )
   ];
 
@@ -83,7 +115,7 @@ class _ScreenBState extends State<ScreenB> {
         children: [
           Expanded(
             child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 4.0,
                 mainAxisSpacing: 4.0,
@@ -114,8 +146,7 @@ class _ScreenBState extends State<ScreenB> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) {
-                      //issue with purchasing multiple at a time.
-                      //items.removeAt(index);
+                      //items.removeAt(index);  //issue with purchasing multiple at a time.
                       //_selectedItems.remove(index);
                       cartCost += ((items[index] as ShopItem).price);
                     });
@@ -125,7 +156,8 @@ class _ScreenBState extends State<ScreenB> {
                         if((items[item] as ShopItem).type == 1){
                           FoodItem tempFood = FoodItem(
                             name: (items[item] as ShopItem).name,
-                            healthPoints: (items[item] as ShopItem).healthPoints,
+                            foodType: (items[item] as ShopItem).foodType,
+                            hungerPoints: (items[item] as ShopItem).hungerPoints,
                             imagePath: (items[item] as ShopItem).imagePath,
                             description: (items[item] as ShopItem).description,
                           );
@@ -135,7 +167,9 @@ class _ScreenBState extends State<ScreenB> {
                         else if((items[item] as ShopItem).type == 2){
                           ClotheItem tempClothe = ClotheItem(
                               name: (items[item] as ShopItem).name,
+                              clothingType: (items[item] as ShopItem).clothingType,
                               imagePath: (items[item] as ShopItem).imagePath,
+                              spriteImagePath: (items[item] as ShopItem).spriteImagePath,
                               description: (items[item] as ShopItem).description,
                           );
                           privateWardrobe.add(tempClothe);
@@ -146,6 +180,7 @@ class _ScreenBState extends State<ScreenB> {
                             name: (items[item] as ShopItem).name,
                             durability: (items[item] as ShopItem).durability,
                             imagePath: (items[item] as ShopItem).imagePath,
+                            toyType: (items[item] as ShopItem).toyType,
                             description: (items[item] as ShopItem).description,
 
                           );

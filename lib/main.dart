@@ -11,6 +11,12 @@ import 'pin_screen.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'pet_view.dart';
+import 'theme_provider.dart';
+//import 'screen2.dart';
+//import 'settings_screen.dart';
+//import 'pin_screen.dart';
+//import 'login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +38,7 @@ class MyApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       theme: themeProvider.isDarkTheme ? ThemeData.dark() : ThemeData.light(),
-      home: MyHomePage(),
+      home: IntermediateScreen(),
     );
   }
 }

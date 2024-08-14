@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'points_storage.dart';
+import 'package:tamagotchi/background.dart';
 import 'theme_provider.dart';
 import 'pcontrols.dart';
 
@@ -9,23 +10,26 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeProvider>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Settings'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+        ),
       body: ListView(
         children: [
           SwitchListTile(
-            title: const Text('Enable Notifications'),
+            title: Text('Enable Notifications'),
             value: Provider.of<ThemeProvider>(context).notificationsEnabled,
             onChanged: (bool value) {
               Provider.of<ThemeProvider>(context, listen: false).toggleNotifications();
             },
           ),
           SwitchListTile(
-            title: const Text('Enable Dark Mode'),
-            value: themeNotifier.isDarkTheme,
+            title: Text('Enable Dark Mode'),
+            value: Provider.of<ThemeProvider>(context).themeData == ThemeData.dark(),
             onChanged: (bool value) {
               themeNotifier.toggleTheme();
             },
@@ -35,8 +39,8 @@ class SettingsScreen extends StatelessWidget {
           ),
 
           ListTile(
-            title: const Text('Account Settings'),
-            trailing: const Icon(Icons.arrow_forward),
+            title: Text('Account Settings'),
+            trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
@@ -45,12 +49,22 @@ class SettingsScreen extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Parental Controls'),
-            trailing: const Icon(Icons.arrow_forward),
+            title: Text('Parental Controls'),
+            trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ParentalControlsScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Background Image'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BackgroundImageScreen()),
               );
             },
           ),
@@ -61,6 +75,7 @@ class SettingsScreen extends StatelessWidget {
           )
         ],
       ),
+     ),
     );
   }
 }
@@ -70,10 +85,44 @@ class AccountSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account Settings'),
+        title: Text('Account Settings'),
       ),
-      body: const Center(
+      body: Center(
         child: Text('Account Settings Page'),
+      ),
+    );
+  }
+}
+
+class BackgroundImageScreen extends StatelessWidget {
+  final List<String> images = [
+    'assets/bubbles1.webp',
+    'assets/bluebub.jpg',
+    'assets/dino.jpg',
+    'assets/weather.webp',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Select Background Image'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setBackgroundImage(images[index]);
+              Navigator.pop(context);
+            },
+            child: Image.asset(
+              images[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
       ),
     );
   }

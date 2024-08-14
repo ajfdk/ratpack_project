@@ -18,30 +18,47 @@ import 'theme_provider.dart';
 //import 'pin_screen.dart';
 //import 'login.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  // get saved preferences from shared_preferences
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool isDarkTheme = prefs.getBool("theme") ?? false;
-
-  runApp(
-    ChangeNotifierProvider<ThemeProvider>(
-      create: (_) => ThemeProvider(isDarkTheme),
-      child: MyApp(),
-    )
-  );
-}
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   // get saved preferences from shared_preferences
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   bool isDarkTheme = prefs.getBool("theme") ?? false;
+//
+//   runApp(
+//     ChangeNotifierProvider<ThemeProvider>(
+//       create: (_) => ThemeProvider(),
+//       child: MyApp(),
+//     )
+//   );
+// }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    return MaterialApp(
-      theme: themeProvider.isDarkTheme ? ThemeData.dark() : ThemeData.light(),
-      home: IntermediateScreen(),
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(ThemeData.light()),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'Flutter Demo',
+            theme: themeProvider.themeData,
+            home: IntermediateScreen(),
+          );
+        },
+      ),
     );
   }
 }
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final themeProvider = Provider.of<ThemeProvider>(context);
+//     return MaterialApp(
+//       theme: themeProvider.isDarkTheme ? ThemeData.dark() : ThemeData.light(),
+//       home: IntermediateScreen(),
+//     );
+//   }
+// }
 
 class MyHomePage extends StatelessWidget {
   // int points = 20000;

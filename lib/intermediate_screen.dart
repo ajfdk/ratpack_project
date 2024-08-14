@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import 'theme_provider.dart';
 import 'pin_screen.dart';
 
+// TODO: move runApp back to main.dart???? thats where myapp is anyway
 void main() {
   runApp(MyApp());
 }
@@ -152,7 +153,7 @@ class IntermediateScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ScreenB()),
+                      MaterialPageRoute(builder: (context) => ScreenB(storage: PointsStorage(),)),
                     );
                   },
                 ),

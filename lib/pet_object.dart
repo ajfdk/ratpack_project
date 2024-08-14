@@ -8,6 +8,7 @@ void main() {
       hunger: 0,
       age: 0,
       happiness: 0,
+      lastTask: DateTime.now(),
       curstatus: STATUS.ok);
 }
 
@@ -19,6 +20,7 @@ class Pet {
   final int age;
   final int happiness;
   final STATUS curstatus;
+  final DateTime lastTask;
   late List taskList;
   late String shirt;
   late String pants;
@@ -30,7 +32,8 @@ class Pet {
     required this.hunger,
     required this.age,
     required this.happiness,
-    required this.curstatus
+    required this.curstatus,
+    required this.lastTask
 });
 }
 

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'points_storage.dart';
 import 'package:tamagotchi/background.dart';
 import 'theme_provider.dart';
 import 'pcontrols.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final PointsStorage storage = PointsStorage();
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeProvider>(context);
     return BackgroundContainer(
         child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -28,9 +31,13 @@ class SettingsScreen extends StatelessWidget {
             title: Text('Enable Dark Mode'),
             value: Provider.of<ThemeProvider>(context).themeData == ThemeData.dark(),
             onChanged: (bool value) {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+              themeNotifier.toggleTheme();
             },
+            secondary: Icon(
+              themeNotifier.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
+            ),
           ),
+
           ListTile(
             title: Text('Account Settings'),
             trailing: Icon(Icons.arrow_forward),
@@ -61,6 +68,11 @@ class SettingsScreen extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('DELETE APPDATA'),
+            tileColor: Colors.red,
+            onTap: storage.deleteDocumentsDirectory,
+          )
         ],
       ),
      ),

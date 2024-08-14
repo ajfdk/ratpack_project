@@ -4,12 +4,29 @@ import 'item_model.dart';
 import 'item_widget.dart';
 import 'package:tamagotchi/main.dart';
 import 'player_guest.dart';
+import 'points_storage.dart';
+
 class ScreenB extends StatefulWidget {
+  const ScreenB({super.key, required this.storage});
+  // store and retrieve points!
+  final PointsStorage storage;
+
   @override
   _ScreenBState createState() => _ScreenBState();
 }
 
 class _ScreenBState extends State<ScreenB> {
+  double _points = 0;
+  @override
+  void initState() {
+    super.initState();
+    widget.storage.readPoints().then((value) {
+      setState(() {
+        _points = value;
+      });
+    });
+  }
+
   double cartCost = 0;
   double pointsShop = points;
   final List<Item> items = [
@@ -23,7 +40,7 @@ class _ScreenBState extends State<ScreenB> {
       description: 'Pants for not being naked',
     ),
     ShopItem(
-      name: 'Tomogatchi',
+      name: 'Tamagotchi',
       type: 3,
       toyType: 1,
       durability: 100,
@@ -58,7 +75,7 @@ class _ScreenBState extends State<ScreenB> {
       description: '',
     ),
     ShopItem(
-      name: 'French Frys',
+      name: 'French Fries',
       type: 1,
       foodType: 2,
       hungerPoints: 25,
@@ -133,7 +150,7 @@ class _ScreenBState extends State<ScreenB> {
                       //_selectedItems.remove(index);
                       cartCost += ((items[index] as ShopItem).price);
                     });
-                    if(pointsShop >= cartCost) {
+                    if(_points >= cartCost) {
                       _selectedItems.forEach((item){
                         print((items[item] as ShopItem).type);
                         if((items[item] as ShopItem).type == 1){
@@ -171,7 +188,8 @@ class _ScreenBState extends State<ScreenB> {
                           print(privateToyBox);
                         }
                     });
-                      pointsShop -= cartCost;
+                      _points -= cartCost;
+                      var _ = widget.storage.writePoints(_points);
                     }
                     else{
                       showDialog(
@@ -192,14 +210,15 @@ class _ScreenBState extends State<ScreenB> {
                     }
                     cartCost=0;
                     _selectedItems.clear();
-                    points = pointsShop;
+                    // points are now handled with storage
+                    // points = _points;
                   });
                 },
                 child: Text('Purchase'),
               ),
               Text.rich(
                 TextSpan(
-                    text: "Points: " + pointsShop.toString()
+                    text: "Points: " + _points.toString()
                 )
               )
             ],

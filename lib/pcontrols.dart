@@ -8,13 +8,13 @@ class ParentalControlsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Parental Controls'),
+        title: const Text('Parental Controls'),
       ),
       body: ListView(
         children: [
           //PIN toggle
           SwitchListTile(
-            title: Text('Enable PIN Protection'),
+            title: const Text('Enable PIN Protection'),
             value: Provider.of<ThemeProvider>(context).pinProtectionEnabled,
             onChanged: (bool value) {
               Provider.of<ThemeProvider>(context, listen: false).togglePinProtection();
@@ -22,8 +22,8 @@ class ParentalControlsScreen extends StatelessWidget {
           ),
           // change pin option
           ListTile(
-            title: Text('Change PIN'),
-            trailing: Icon(Icons.arrow_forward),
+            title: const Text('Change PIN'),
+            trailing: const Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
@@ -60,7 +60,7 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Change PIN'),
+        title: const Text('Change PIN'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -69,7 +69,7 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
           children: [
             TextField(
               controller: _newPinController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Enter new 4-digit PIN',
                 border: OutlineInputBorder(),
               ),
@@ -77,10 +77,10 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
               maxLength: 4,
               obscureText: true,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _confirmPinController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Confirm new 4-digit PIN',
                 border: OutlineInputBorder(),
               ),
@@ -88,22 +88,22 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
               maxLength: 4,
               obscureText: true,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 if (_newPinController.text == _confirmPinController.text) {
                   Provider.of<ThemeProvider>(context, listen: false).setPin(_newPinController.text);
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('PIN changed successfully')),
+                    const SnackBar(content: Text('PIN changed successfully')),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('PINs do not match')),
+                    const SnackBar(content: Text('PINs do not match')),
                   );
                 }
               },
-              child: Text('Change PIN'),
+              child: const Text('Change PIN'),
             ),
           ],
         ),

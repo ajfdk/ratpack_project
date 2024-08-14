@@ -13,6 +13,16 @@ class ThemeProvider extends ChangeNotifier {
     _loadPreferences();
   }
 
+  final String key = "theme";
+  late SharedPreferences _prefs;
+  bool _isDarkTheme = false;
+
+  // ThemeProvider(this._isDarkTheme) {
+  //   _loadFromPrefs();
+  // }
+
+  bool get isDarkTheme => _isDarkTheme;
+
   ThemeData get themeData => _themeData;
   bool get notificationsEnabled => _notificationsEnabled;
   bool get pinProtectionEnabled => _pinProtectionEnabled;
@@ -27,6 +37,32 @@ class ThemeProvider extends ChangeNotifier {
       _themeData = ThemeData.light();
     }
     notifyListeners();
+  }
+  //   Future<void> loadThemeFromPrefs() async {
+  //   _prefs = await SharedPreferences.getInstance();
+  //   _isDarkTheme = _prefs.getBool(key) ?? false;
+  //   notifyListeners();
+  // }
+  //
+  // toggleTheme() {
+  //   _isDarkTheme = !_isDarkTheme;
+  //   _saveToPrefs();
+  //   notifyListeners();
+  // }
+
+  _initPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+  }
+
+  _loadFromPrefs() async {
+    await _initPrefs();
+    _isDarkTheme = _prefs.getBool(key) ?? false;
+    notifyListeners();
+  }
+
+  _saveToPrefs() async {
+    await _initPrefs();
+    _prefs.setBool(key, _isDarkTheme);
   }
 
   void toggleNotifications() {

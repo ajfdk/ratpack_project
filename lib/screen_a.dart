@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
+import 'item_model.dart';
+import 'item_widget.dart';
 import 'package:tamagotchi/pet_view.dart';
 import 'gameScreen.dart';
 import 'item_model.dart';

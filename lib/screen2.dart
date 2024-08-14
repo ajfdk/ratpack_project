@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:tamagotchi/main.dart';
+import 'package:tamagotchi/background.dart';
 
 class Screen2 extends StatefulWidget{
   @override
@@ -107,6 +107,21 @@ class _Screen2State extends State<Screen2> {
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+  @override
+  Widget build(BuildContext context) {
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('To-Do List'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+      body: Center(
+        child: Text('Place To-do List here'),
+      ),
+    ),
+
     );
   }
 }

@@ -7,9 +7,14 @@ import 'settings_screen.dart';
 import 'theme_provider.dart';
 import 'pin_screen.dart';
 import 'pet_view.dart';
-void main() {
+import 'theme_provider.dart';
+//import 'screen2.dart';
+//import 'settings_screen.dart';
+//import 'pin_screen.dart';
+
+/*void main() {
   runApp(MyApp());
-}
+}*/
 
 class MyApp extends StatelessWidget {
   @override
@@ -21,7 +26,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: themeProvider.themeData,
-            home: MyHomePage(),
+            home: IntermediateScreen(),
           );
         },
       ),
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+/*class MyHomePage extends StatelessWidget {
   int points = 20000;
   final game = MyGame();
 
@@ -63,9 +68,7 @@ class MyHomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                bool pinProtectionEnabled =
-                    Provider.of<ThemeProvider>(context, listen: false)
-                        .pinProtectionEnabled;
+                bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
                 if (pinProtectionEnabled) {
                   Navigator.push(
                     context,
@@ -78,7 +81,7 @@ class MyHomePage extends StatelessWidget {
                   );
                 }
               },
-              child: Text('Go to Settings'),
+              child: Text('Settings'),
             ),
           ],
         ),
@@ -86,5 +89,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
-
-class MyGame {}
+*/

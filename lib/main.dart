@@ -11,6 +11,7 @@ import 'theme_provider.dart';
 //import 'screen2.dart';
 //import 'settings_screen.dart';
 //import 'pin_screen.dart';
+import 'login.dart';
 
 /*void main() {
   runApp(MyApp());

@@ -4,53 +4,102 @@ import 'item_model.dart';
 import 'item_widget.dart';
 import 'package:tamagotchi/main.dart';
 import 'player_guest.dart';
+import 'points_storage.dart';
+
 class ScreenB extends StatefulWidget {
+  const ScreenB({super.key, required this.storage});
+  // store and retrieve points!
+  final PointsStorage storage;
+
   @override
   _ScreenBState createState() => _ScreenBState();
 }
 
 class _ScreenBState extends State<ScreenB> {
+  double _points = 0;
+  @override
+  void initState() {
+    super.initState();
+    widget.storage.readPoints().then((value) {
+      setState(() {
+        _points = value;
+      });
+    });
+  }
+
   double cartCost = 0;
   double pointsShop = points;
   final List<Item> items = [
     ShopItem(
       name: 'Pants',
       type: 2,
+      clothingType: 1,
       price: 10,
       imagePath: 'assets/PantS.png',
+      spriteImagePath: 'pants.png',
       description: 'Pants for not being naked',
     ),
     ShopItem(
-      name: 'Tomogatchi',
+      name: 'Tamagotchi',
       type: 3,
+      toyType: 1,
       durability: 100,
       price: 200,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/Tomogatchi.png',
       description: '',
+    ),
+    ShopItem(
+      name: 'Jeans',
+      type: 2,
+      clothingType: 1,
+      price: 10,
+      imagePath: 'assets/Jeans.png',
+      spriteImagePath: 'jeans.png',
+      description: 'For style',
     ),
     ShopItem(
       name: 'Grill Cheese',
       type: 1,
-      healthPoints: 150,
+      hungerPoints: 25,
       price: 50,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/grilledcheese.jpg',
       description: '',
     ),
     ShopItem(
-      name: 'Fruit Snacks',
+      name: 'Gummies',
       type: 1,
-      healthPoints: 200,
+      foodType: 1,
+      hungerPoints: 10,
       price: 100,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/gummy.jpg',
       description: '',
     ),
     ShopItem(
-      name: 'French Frys',
+      name: 'French Fries',
       type: 1,
-      healthPoints: 30,
+      foodType: 2,
+      hungerPoints: 25,
       price: 999,
-      imagePath: 'assets/PantS.png',
+      imagePath: 'assets/fries.png',
       description: '',
+    ),
+    ShopItem(
+      name: 'Sun Shirt',
+      type: 2,
+      clothingType: 2,
+      price: 10,
+      imagePath: 'assets/Shirt_yellow.png',
+      spriteImagePath: 'Shirt_yellow.png',
+      description: 'Yellow Shirt',
+    ),
+    ShopItem(
+      name: 'Dark Soul Shirt',
+      type: 2,
+      clothingType: 2,
+      price: 10,
+      imagePath: 'assets/Shirt_black.png',
+      spriteImagePath: 'Shirt_black.png',
+      description: 'Its black',
     )
   ];
 
@@ -101,13 +150,14 @@ class _ScreenBState extends State<ScreenB> {
                       //_selectedItems.remove(index);
                       cartCost += ((items[index] as ShopItem).price);
                     });
-                    if(pointsShop >= cartCost) {
+                    if(_points >= cartCost) {
                       _selectedItems.forEach((item){
                         print((items[item] as ShopItem).type);
                         if((items[item] as ShopItem).type == 1){
                           FoodItem tempFood = FoodItem(
                             name: (items[item] as ShopItem).name,
-                            healthPoints: (items[item] as ShopItem).healthPoints,
+                            foodType: (items[item] as ShopItem).foodType,
+                            hungerPoints: (items[item] as ShopItem).hungerPoints,
                             imagePath: (items[item] as ShopItem).imagePath,
                             description: (items[item] as ShopItem).description,
                           );
@@ -117,7 +167,9 @@ class _ScreenBState extends State<ScreenB> {
                         else if((items[item] as ShopItem).type == 2){
                           ClotheItem tempClothe = ClotheItem(
                               name: (items[item] as ShopItem).name,
+                              clothingType: (items[item] as ShopItem).clothingType,
                               imagePath: (items[item] as ShopItem).imagePath,
+                              spriteImagePath: (items[item] as ShopItem).spriteImagePath,
                               description: (items[item] as ShopItem).description,
                           );
                           privateWardrobe.add(tempClothe);
@@ -128,6 +180,7 @@ class _ScreenBState extends State<ScreenB> {
                             name: (items[item] as ShopItem).name,
                             durability: (items[item] as ShopItem).durability,
                             imagePath: (items[item] as ShopItem).imagePath,
+                            toyType: (items[item] as ShopItem).toyType,
                             description: (items[item] as ShopItem).description,
 
                           );
@@ -135,7 +188,8 @@ class _ScreenBState extends State<ScreenB> {
                           print(privateToyBox);
                         }
                     });
-                      pointsShop -= cartCost;
+                      _points -= cartCost;
+                      var _ = widget.storage.writePoints(_points);
                     }
                     else{
                       showDialog(
@@ -156,14 +210,15 @@ class _ScreenBState extends State<ScreenB> {
                     }
                     cartCost=0;
                     _selectedItems.clear();
-                    points = pointsShop;
+                    // points are now handled with storage
+                    // points = _points;
                   });
                 },
                 child: Text('Purchase'),
               ),
               Text.rich(
                 TextSpan(
-                    text: "Points: " + pointsShop.toString()
+                    text: "Points: " + _points.toString()
                 )
               )
             ],

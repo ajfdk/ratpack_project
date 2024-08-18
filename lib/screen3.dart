@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+//Moved to settings_screen
+
+/*import 'package:flutter/material.dart';
 
 class Screen3 extends StatelessWidget {
   @override
@@ -12,4 +14,4 @@ class Screen3 extends StatelessWidget {
       ),
     );
   }
-}
+}*/

@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'points_storage.dart';
+import 'package:tamagotchi/background.dart';
 import 'theme_provider.dart';
 import 'pcontrols.dart';
 
 class SettingsScreen extends StatelessWidget {
+  final PointsStorage storage = PointsStorage();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Settings'),
-      ),
+    final themeNotifier = Provider.of<ThemeProvider>(context);
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Settings'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+        ),
       body: ListView(
         children: [
           SwitchListTile(
@@ -23,9 +31,13 @@ class SettingsScreen extends StatelessWidget {
             title: Text('Enable Dark Mode'),
             value: Provider.of<ThemeProvider>(context).themeData == ThemeData.dark(),
             onChanged: (bool value) {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+              themeNotifier.toggleTheme();
             },
+            secondary: Icon(
+              themeNotifier.isDarkTheme ? Icons.nightlight_round : Icons.wb_sunny,
+            ),
           ),
+
           ListTile(
             title: Text('Account Settings'),
             trailing: Icon(Icons.arrow_forward),
@@ -46,8 +58,24 @@ class SettingsScreen extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: Text('Background Image'),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BackgroundImageScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('DELETE APPDATA'),
+            tileColor: Colors.red,
+            onTap: storage.deleteDocumentsDirectory,
+          )
         ],
       ),
+     ),
     );
   }
 }
@@ -61,6 +89,40 @@ class AccountSettingsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text('Account Settings Page'),
+      ),
+    );
+  }
+}
+
+class BackgroundImageScreen extends StatelessWidget {
+  final List<String> images = [
+    'assets/bubbles1.webp',
+    'assets/bluebub.jpg',
+    'assets/dino.jpg',
+    'assets/weather.webp',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Select Background Image'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setBackgroundImage(images[index]);
+              Navigator.pop(context);
+            },
+            child: Image.asset(
+              images[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
       ),
     );
   }

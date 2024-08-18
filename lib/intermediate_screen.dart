@@ -1,81 +1,169 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
+import 'package:tamagotchi/screen2.dart';
+import 'package:tamagotchi/settings_screen.dart';
+import 'package:tamagotchi/main.dart';
+import 'points_storage.dart';
 import 'gameScreen.dart';
 import 'screen1.dart';
 import 'screen_a.dart';
 import 'screen_b.dart';
 import 'screen_c.dart';
 import 'package:flame/game.dart';
+import 'timer.dart';
+import 'package:provider/provider.dart';
+import 'theme_provider.dart';
+import 'pin_screen.dart';
+
+// TODO: move runApp back to main.dart???? thats where myapp is anyway
+void main() {
+  runApp(MyApp());
+}
+
 
 class IntermediateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Play Screen'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Play Screen'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Column(
         children: [
-          Expanded(
-            child: Center(
-              child: Image.asset('assets/intermediate_image.png'), 
-            ),
-          ),
-          // Flex(direction: Axis.horizontal, children: [],)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(child:
-                ElevatedButton(
-                  onPressed: () {
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
+                icon: Image.asset('assets/todo.png'),
+                iconSize: 20,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Screen2()),
+                  );
+                }
+              ),
+              ),
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
+                icon: Image.asset('assets/timer.png'),
+                iconSize: 20,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TimerScreen()),
+                  );
+                },
+              ),
+              ),
+              SizedBox(
+                width: 75,
+                height: 75,
+                child: IconButton(
+                icon: Image.asset('assets/settings.png'),
+                iconSize: 20,
+                onPressed: () {
+                  bool pinProtectionEnabled = Provider.of<ThemeProvider>(context, listen: false).pinProtectionEnabled;
+                  if (pinProtectionEnabled) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => gameScreen()),
+                      MaterialPageRoute(builder: (context) => PinScreen()),
                     );
-                  },
-                  child: const Text('Game Room', textAlign: TextAlign.center,softWrap: true),
-                ),
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SettingsScreen()),
+                    );
+                  }
+                },
               ),
-              ElevatedButton(
+              ),
+            ],
+          ),
+          Expanded(
+            child: Center(
+              child: Image.asset('assets/kimtten.png'),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: IconButton(
+                icon: Image.asset('assets/clothes.png'),
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ScreenA()),
                   );
                 },
-                child: Text('Clothes'),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ScreenB()),
-                  );
-                },
-                child: Text('Shop'),
               ),
-              ElevatedButton(
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: IconButton(
+                icon: Image.asset('assets/toys.png'),
+                iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ScreenC()),
                   );
                 },
-                child: Text('Toys'),
               ),
-              ElevatedButton(
+              ),
+              ],
+              ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: IconButton(
+                  icon: Image.asset('assets/food.png'),
+                  iconSize: 20,
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Screen1()),
                   );
                 },
-                child: Text('Food Pantry'),
               ),
+                ),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: IconButton(
+                  icon: Image.asset('assets/shop.png'),
+                  iconSize: 20,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ScreenB(storage: PointsStorage(),)),
+                    );
+                  },
+                ),
+                ),
             ],
           ),
           SizedBox(height: 16.0),
         ],
       ),
+     ),
     );
   }
 }

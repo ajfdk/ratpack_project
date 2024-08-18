@@ -1,40 +1,35 @@
-import 'screen2.dart';
-
-void main() {
-  Pet basePet = Pet(
-      name: "New",
-      spritePath: 'assets/images/mogus.png',
-      growth: 0,
-      hunger: 0,
-      age: 0,
-      happiness: 0,
-      lastTask: DateTime.now(),
-      curstatus: STATUS.ok);
-}
-
 class Pet {
   final String name;
-  final String spritePath;
+  int affection;
   final int growth;
-  final int hunger;
+  int energy;
+  int hunger;
   final int age;
-  final int happiness;
-  final STATUS curstatus;
-  final DateTime lastTask;
+  int happiness;
+  //arbitrary pet type for indicating item compatability
+  //values to be determined on pet design.
+  final int petType;
+  final String petSpecies;
+  String petSpriteHead;
+  String petSpriteLegs;
+  STATUS curstatus;
+  late DateTime lastTask;
   late List taskList;
-  late String shirt;
-  late String pants;
 
   Pet({
     required this.name,
-    required this.spritePath,
+    required this.affection,
     required this.growth,
+    required this.energy,
     required this.hunger,
     required this.age,
     required this.happiness,
-    required this.curstatus,
-    required this.lastTask
-});
+    required this.petType,
+    required this.petSpecies,
+    required this.petSpriteHead,
+    required this.petSpriteLegs,
+    required this.curstatus
+  });
 }
 
-enum STATUS {great, happy, ok, tired, sick, hungry}
+enum STATUS {great, happy, ok, tired, sick, hungry,bored,excited, full,}

@@ -1,48 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:tamagotchi/background.dart';
 import 'item_model.dart';
 import 'item_widget.dart';
-
+import 'player_guest.dart';
+import 'pet_object.dart';
+import 'pet_view.dart';
 class ScreenC extends StatefulWidget {
   @override
   _ScreenCState createState() => _ScreenCState();
 }
 
 class _ScreenCState extends State<ScreenC> {
-  final List<Item> items = [
-    ToyItem(
-      name: 'Ball',
-      durability: 50,
-      description: 'A big red bouncy ball to throw around',
-      imagePath: 'assets/ball.png',
-    ),
-    ToyItem(
-      name: 'Legos',
-      durability: 9999,
-      description: 'Colorful building bricks',
-      imagePath: 'assets/lego.png',
-    ),
-    ToyItem(
-      name: 'Teddy Bear',
-      durability: 150,
-      description: 'A brown cuddly bear',
-      imagePath: 'assets/bear.jpg',
-    ),
-    ToyItem(
-      name: 'Toy Car',
-      durability: 200,
-      description: 'Yellow windup car',
-      imagePath: 'assets/toycar.png',
-    )
-  ];
-
+  final List<ToyItem> items = privateToyBox;
   final Set<int> _selectedItems = {};
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Toys'),
-      ),
+    return BackgroundContainer(
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text('Toy Box'),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
       body: Column(
         children: [
           Expanded(
@@ -78,8 +59,64 @@ class _ScreenCState extends State<ScreenC> {
                 onPressed: () {
                   setState(() {
                     _selectedItems.forEach((index) {
-                      items.removeAt(index);
+                      if(playerPet.curstatus == STATUS.hungry){
+                        showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                        title: Text("Oh No! I am too hungry to play!"),
+                        content: Ink.image(
+                        image: const AssetImage('assets/hungry.jpg')
+                        ),
+                        actions:[
+                          TextButton(
+                            child: Text("OK"),
+                              onPressed:()=> Navigator.pop(context),
+                            )
+                          ]
+                          ),
+                        );
+                      }
+                      else if(playerPet.curstatus == STATUS.tired){
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                              title: Text("Oh No! I am too tired to play!"),
+                              content: Ink.image(
+                                  image: const AssetImage('assets/tired.jpg')
+                              ),
+                              actions:[
+                                TextButton(
+                                  child: Text("OK"),
+                                  onPressed:()=> Navigator.pop(context),
+                                )
+                              ]
+                          ),
+                        );
+                      }
+                      else if(playerPet.curstatus == STATUS.bored && playerPet.petType ==items[index].toyType){
+                        playerPet.curstatus = STATUS.excited;
+                        playerPet.happiness += 150;
+                        playerPet.energy -= 25;
+                        playerPet.affection += 2;
+                        items[index].durability = items[index].durability!-1;
+                      }
+                      else if(playerPet.curstatus == STATUS.bored || playerPet.petType == items[index].toyType){
+                        playerPet.curstatus = STATUS.excited;
+                        playerPet.happiness += 100;
+                        playerPet.energy -= 20;
+                        playerPet.affection += 2;
+                        items[index].durability = items[index].durability!-1;
+                      }
+                      else{
+                        playerPet.happiness += 50;
+                        playerPet.curstatus = STATUS.happy;
+                        playerPet.affection += 1;
+                        items[index].durability = items[index].durability!-1;
+                      }
                     });
+                    print(playerPet.curstatus);
+                    print(playerPet.happiness);
+                    print(playerPet.energy);
                     _selectedItems.clear();
                   });
                 },
@@ -90,6 +127,7 @@ class _ScreenCState extends State<ScreenC> {
           SizedBox(height: 16.0),
         ],
       ),
+    ),
     );
   }
 }

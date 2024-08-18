@@ -8,8 +8,11 @@ class Screen2 extends StatefulWidget{
   _Screen2State createState() => _Screen2State();
 }
 
+// task goal statuses for communicating to other objects that a task was completed
+// or failed.
 enum GOAL {incomplete, done, failed}
 
+// The parts of the task including the task, status, time to completion, and points.
 class _ListObject {
   late String task;
   late GOAL taskStatus;
@@ -17,6 +20,7 @@ class _ListObject {
   late int taskPoints;
 }
 
+// The to do list screen area
 class _Screen2State extends State<Screen2> {
   var todolist = <_ListObject>[];
   var todolistPrint = <String?>[];
@@ -30,6 +34,7 @@ class _Screen2State extends State<Screen2> {
     });
   }
 
+  // Adds an item to the list.
   void _listAdd() {
     setState(() {
       var newObject = _ListObject();
@@ -46,6 +51,7 @@ class _Screen2State extends State<Screen2> {
     });
   }
 
+  // Removes the last item added to the list.
   void _listRemove() {
     setState(() {
       todolist.removeLast();

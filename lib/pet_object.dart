@@ -1,3 +1,5 @@
+
+// Pet class object. Used for clothing, toys, food, and other interactables with the pet object.
 class Pet {
   final String name;
   int affection;
@@ -13,9 +15,11 @@ class Pet {
   String petSpriteHead;
   String petSpriteLegs;
   STATUS curstatus;
+  //Will be connected to the pet for tasks.
   late DateTime lastTask;
   late List taskList;
 
+  // required variables and values for the pet (also acts as the initial declaration for the pet object variables.).
   Pet({
     required this.name,
     required this.affection,
@@ -32,4 +36,6 @@ class Pet {
   });
 }
 
+
+// Planned Statuses for the pet. Currently have no functionality.
 enum STATUS {great, happy, ok, tired, sick, hungry,bored,excited, full,}
